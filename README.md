@@ -1,8 +1,8 @@
 <h1>Prerequisites</h1>
 Before you can carry out the steps below, you need to have two things installed:
 <ol>
-  <li>1. Spring Tools 4 eclipse marketplace plugin (picture below)</li>
-  <li>2. Node.js and npm (a package manager). If you download the latest node.js version, this should come with an instance of npm.</li>
+  <li>Spring Tools 4 eclipse marketplace plugin (picture below)</li>
+  <li>Node.js and npm (a package manager). If you download the latest node.js version, this should come with an instance of npm.</li>
 </ol>
 
 <br/><br/>
