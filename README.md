@@ -83,7 +83,7 @@ git clone https://github.com/emu-computer-science/insurance-premium-classifier.g
 <br/><br/>
 
 <h2>React</h2>
-<p>1. Navigate to frontend folder in your terminal</p>
+<p>1. Navigate to the frontend folder in your terminal</p>
 
 <p>2. Run the following command</p>
 npm install
