@@ -12,7 +12,7 @@ public class ApiController {
 
 	@GetMapping("/test")
 	public String test() {
-		return "It works!";
+		return "It works on Windows and Mac!";
 	}
 	
 }
