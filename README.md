@@ -40,7 +40,7 @@ git clone https://github.com/emu-computer-science/insurance-premium-classifier.g
 ![step 5](https://github.com/seanpolid/insurance-premium-classifier-photos/blob/main/5.png)
 <br/><br/>
 
-<p>6. A new window like the one should pop up. Since I've already tested this, the repository I want to import (insurance-premium-classifier) is already present. You'll likely need to browse your local file directory to import the repository (you only need to select the root folder of the repo). After you've selected it, click 'Add'.</p>
+<p>6. A new window like the one below should pop up. Since I've already tested this, the repository I want to import (insurance-premium-classifier) is already present. You'll likely need to browse your local file directory to import the repository (you only need to select the root folder of the repo). After you've selected it, click 'Add'.</p>
 
 <br/><br/>
 ![step 6](https://github.com/seanpolid/insurance-premium-classifier-photos/blob/main/6.png)
