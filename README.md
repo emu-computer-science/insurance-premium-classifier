@@ -99,7 +99,7 @@ npm run dev
 ![react step 3](https://github.com/seanpolid/insurance-premium-classifier-photos/blob/main/react-3.png)
 <br/><br/>
 
-<p>4. A link will have popped up after running the command above. Now click on the link (you may need to hold 'ctrl'). Your default browser now should have called our local development server (which runs on port 5173) and you should see the page below.</p>
+<p>4. A link will have popped up after running the command above. Now click on the link (you may need to hold 'ctrl'). Your default browser now should have called our local frontend development server (which runs on port 5173) and you should see the page below.</p>
 
 <br/><br/>
 ![react step 4](https://github.com/seanpolid/insurance-premium-classifier-photos/blob/main/react-4.png)
