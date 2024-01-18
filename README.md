@@ -58,7 +58,7 @@ git clone https://github.com/emu-computer-science/insurance-premium-classifier.g
 ![step 8](https://github.com/seanpolid/insurance-premium-classifier-photos/blob/main/8.png)
 <br/><br/>
 
-<p>9. Click finish and you should now see the repository in your package explorer window. If you look at the folder icon next to the name, you'll notice that Eclipse does not label it as a Maven project or a Java project. If you tried to run the application at this point, it'd likely fail.</p>
+<p>9. Click finish and you should now see the repository in your package explorer window. If you look at the folder icon next to the name, you'll notice that Eclipse does not label it as a Maven project or a Java project. If you try to run the application at this point, it'll likely fail.</p>
 
 <br/><br/>
 ![step 9](https://github.com/seanpolid/insurance-premium-classifier-photos/blob/main/9.png)
