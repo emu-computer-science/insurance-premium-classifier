@@ -52,7 +52,7 @@ git clone https://github.com/emu-computer-science/insurance-premium-classifier.g
 ![step 7](https://github.com/seanpolid/insurance-premium-classifier-photos/blob/main/7.png)
 <br/><br/>
 
-<p>8. This is probably the most important step now. Import the project as a <b>general project</b></p>
+<p>8. This is probably the most important step. Import the project as a <b>general project</b></p>
 
 <br/><br/>
 ![step 8](https://github.com/seanpolid/insurance-premium-classifier-photos/blob/main/8.png)
