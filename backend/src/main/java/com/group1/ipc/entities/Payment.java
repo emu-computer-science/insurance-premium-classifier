@@ -2,7 +2,9 @@ package com.group1.ipc.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,15 +16,26 @@ import jakarta.persistence.ManyToOne;
 public class Payment {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private BigDecimal amount;
 	private LocalDate dueDate;
 	private boolean missed;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="client_id")
 	private Client client;
+	
+	public Payment() {
+	}
+
+	public Payment(int id, BigDecimal amount, LocalDate dueDate, boolean missed) {
+		super();
+		this.id = id;
+		this.amount = amount;
+		this.dueDate = dueDate;
+		this.missed = missed;
+	}
 
 	public int getId() {
 		return id;
@@ -62,6 +75,25 @@ public class Payment {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(amount, dueDate, id, missed);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Payment other = (Payment) obj;
+		return Objects.equals(amount, other.amount) && Objects.equals(dueDate, other.dueDate) && id == other.id
+				&& missed == other.missed
+				&& (client == null && other.client == null || client.getId() == other.client.getId());
 	}
 	
 }

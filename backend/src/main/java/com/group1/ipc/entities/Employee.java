@@ -1,5 +1,8 @@
 package com.group1.ipc.entities;
 
+import java.util.Objects;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +15,7 @@ import jakarta.persistence.OneToOne;
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String firstName;
 	private String lastName;
@@ -21,10 +24,29 @@ public class Employee {
 	@JoinColumn(name="manager_id")
 	private Employee manager;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="organization_id")
 	private Organization organization;
 	
+	public Employee() {
+	}
+ 	
+	public Employee(int id, String firstName, String lastName) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+	public Employee(int id, String firstName, String lastName, Employee manager, Organization organization) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.manager = manager;
+		this.organization = organization;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -64,5 +86,26 @@ public class Employee {
 	public void setOrganization(Organization organization) {
 		this.organization = organization;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstName, id, lastName, manager, organization);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		return Objects.equals(firstName, other.firstName) && id == other.id && Objects.equals(lastName, other.lastName)
+				&& ((manager == null && other.manager == null) || manager.getId() == other.manager.getId())
+				&& Objects.equals(organization, other.organization);
+	}
+	
+	
 	
 }
