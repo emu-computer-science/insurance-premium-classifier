@@ -18,3 +18,18 @@ spring:
     username: ${MYSQL_USERNAME}
     password: ${MYSQL_PASSWORD}
       
+      
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+      
+  flyway:
+    enabled: true
+    
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST_TEST}/car_insurance
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
