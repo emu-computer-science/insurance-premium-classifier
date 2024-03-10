@@ -1,5 +1,8 @@
 package com.group1.ipc.entities;
 
+import java.util.Objects;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +14,7 @@ import jakarta.persistence.ManyToOne;
 public class Vehicle {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String vin;
 	private String make;
@@ -20,9 +23,23 @@ public class Vehicle {
 	private int miles;
 	private String plate;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="client_id")
 	private Client client;
+	
+	public Vehicle() {
+	}
+
+	public Vehicle(int id, String vin, String make, String model, int year, int miles, String plate) {
+		super();
+		this.id = id;
+		this.vin = vin;
+		this.make = make;
+		this.model = model;
+		this.year = year;
+		this.miles = miles;
+		this.plate = plate;
+	}
 
 	public int getId() {
 		return id;
@@ -86,6 +103,26 @@ public class Vehicle {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, make, miles, model, plate, vin, year);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vehicle other = (Vehicle) obj;
+		return id == other.id && Objects.equals(make, other.make) && miles == other.miles
+				&& Objects.equals(model, other.model) && Objects.equals(plate, other.plate)
+				&& Objects.equals(vin, other.vin) && year == other.year
+				&& (client == null && other.client == null || client.getId() == other.client.getId());
 	}
 	
 }

@@ -42,7 +42,7 @@ CREATE TABLE if not exists vehicle (
 CREATE TABLE if not exists payment (
 	id INT NOT NULL AUTO_INCREMENT,
 	client_id INT NOT NULL,
-	amount DECIMAL,
+	amount DECIMAL(9, 2),
 	due_date DATE,
 	missed BOOLEAN DEFAULT FALSE,
 	PRIMARY KEY (id),
