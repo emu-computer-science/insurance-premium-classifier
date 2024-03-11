@@ -20,7 +20,7 @@ public class Organization {
 	private String name;
 	private String address;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="organization")
 	@Transient
 	public List<Employee> employees;
 	
