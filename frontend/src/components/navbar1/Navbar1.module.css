@@ -1,0 +1,38 @@
+.navbar{
+    display: flex;
+    color: #fff;
+    font-family: Inter, sans-serif;
+    justify-content: space-between; 
+    padding: 10px 20px; 
+    margin: 0 auto; 
+
+  }
+
+  .navLinks {
+    display: flex;  
+    gap: 20px;  
+  }
+
+  .white{
+    color:white ; 
+    text-decoration: none ;
+  }
+
+.login{
+  font-weight:700;
+}
+
+.navbar2{
+  margin-top:5px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  margin: 15px;
+  color:white;
+  text-decoration: none;
+}
+
+.logout{
+  font-weight:700;
+}

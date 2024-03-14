@@ -1,0 +1,64 @@
+.pinkElipse{
+  height: 350px;
+  top: -150px;  
+  position: fixed;
+  width: 600px;
+  background-color: #B999D3;
+  border-radius: 100% ;
+  align-self: flex-start;
+  margin-left:100px;
+  z-index: -1;
+  filter: blur(100px);
+} 
+
+.blueCircle{
+  height: 400px;
+  right: -220px;  
+  position: fixed;
+  width: 400px;
+  border-radius: 100% ;
+  background-color:#99D2D3;
+  justify-content: center;
+  margin-top: 100px;
+  z-index: -1;
+  filter: blur(110px);
+} 
+
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
+
+.registrationForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+}
+
+.inputField{
+  border-radius: 3px;
+  border-color: rgba(112, 112, 112, 1); 
+  background-color: #fff;
+  margin-bottom: 20px;
+  width: 600px;
+  max-width: 100%;
+  padding: 10px 0px 10px 40px;
+  font-family: Inter, sans-serif;
+} 
+
+.next {
+  border-style: solid;
+  border-width: 1px;
+  align-self:end;
+  width: 150px;
+  height:40px;
+  max-width: 100%;
+  text-align: center;
+  padding: 10px 20px;
+  background-color: white;
+  font-family: Inter, sans-serif;
+  }
+
+

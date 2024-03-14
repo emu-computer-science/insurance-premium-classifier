@@ -1,0 +1,55 @@
+.pinkEllipse{
+    height: 350px;
+    top: -150px;  
+    position: fixed;
+    width: 600px;
+    background-color: #B999D3;
+    border-radius: 100% ;
+    align-self: flex-start;
+    margin-left:100px;
+    z-index: -1;
+    filter: blur(100px);
+  } 
+  
+  .blueCircle{
+    height: 400px;
+    right: -220px;  
+    position: fixed;
+    width: 400px;
+    border-radius: 100% ;
+    background-color:#99D2D3;
+    justify-content: center;
+    margin-top: 100px;
+    z-index: -1;
+    filter: blur(110px);
+  }
+
+  h1{
+    margin-top:150px;
+  }
+
+h2,h1{
+  color:white;
+  text-align:center;
+  }
+  
+.btn{
+background-color:white;
+display: inline-block;
+height:50px;
+width:70px;
+border-radius: 10px;
+text-decoration: none;
+font-size: 25px;
+padding:25px;
+margin-top:70px;
+}
+
+.container{
+  display:flex;
+  align-items: center;
+  gap:200px;
+  justify-content: center;
+}
+
+

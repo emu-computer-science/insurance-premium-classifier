@@ -1,19 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import {Navbar1} from '../../navbar1/Navbar1.jsx';
+import styles from "./Loginc.module.css";
+import { useNavigate } from 'react-router-dom';
 
 const Loginc = () => {
+  const navigateUserDashboard = useNavigate();
+  const handleClickLogin = () => {
+    navigateUserDashboard('/user-dashboard');
+  };
+  const navigate = useNavigate();
+  const handleClickRegister = () => {
+  navigate('/sign-up');
+  };
   return (
-    <>
-    <div className="container">
-      <h2 className="fw-bold mb-4">Login</h2>
-      <input type="text" className="form-control" placeholder="Email" />
-      <input type="password" className="form-control" placeholder="Password" />
-      <button className="btn btn-primary" type="submit">Login</button>
-      <p style={{ color: 'red' }}>{/* This is where you should render your error message */}</p>
-      <p className="mt-3">Don't have an account? <Link to="/sign-up">Sign Up</Link></p>
-      <p className="mt-3"><Link to="/">Back to Dashboard</Link></p>
+      <div className="div">
+        <Navbar1/>
+        <div className={styles.pinkElipse}></div>
+        <div className={styles.blueCircle}></div>
+        <form className={styles.loginForm}>
+        <input type="text" className={styles.inputField} placeholder="Member id, employee id or email" />
+        <input type="password" className={styles.inputField} placeholder="Password" />
+        <button type="button" className={styles.loginButton} onClick={handleClickLogin} >Login</button>
+        <div className={styles.text}>Forgot password?</div>
+        <button type="button" className={styles.registerButton} onClick={handleClickRegister} >Register</button>
+        </form>
       </div>
-    </>
   );
 }
 
