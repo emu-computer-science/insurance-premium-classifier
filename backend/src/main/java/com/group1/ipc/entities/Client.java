@@ -26,11 +26,11 @@ public class Client {
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	public Employee employee;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="client")
 	@Transient
 	public List<Vehicle> vehicles;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="client")
 	@Transient
 	public List<Payment> payments;
 	
