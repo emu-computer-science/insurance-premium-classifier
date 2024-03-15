@@ -43,7 +43,7 @@ public class OrganizationController {
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/deleteorg/{id}")
-	public void deletePayment(@PathVariable int id) {
+	public void deleteorg(@PathVariable int id) {
 		organizationService.deleteOrg(id);
 	}
 }
