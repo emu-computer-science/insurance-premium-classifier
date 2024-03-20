@@ -42,7 +42,7 @@ const ViewAllUsers= () =>{
                         <button className={styles.searchButton}>Search</button>
                     </div>
                     <div className='resultsContainer'>
-                        <DisplayItem user = {title} />
+                        <b><DisplayItem user = {title} /></b>
                        
                        {
                         users.map(user => (
