@@ -3,13 +3,7 @@ package com.group1.ipc.controllers;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
-
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.group1.ipc.entities.Vehicle;
 import com.group1.ipc.services.interfaces.IVehicleService;
 
@@ -23,34 +17,34 @@ public class VehicleController {
 		this.vehicleService = vehicleController;
 	}
 	
-	@RequestMapping("/getvehicles")
+	@GetMapping("/vehicle")
 	public List<Vehicle> getAllVehicles() {
 		return vehicleService.getAllVehicles();
 	}
 	
 	//get vehicle based on vehicle id
-	@RequestMapping("/getvehicle/{id}")
+	@GetMapping("/vehicle/{id}")
 	public Optional<Vehicle> getVehicle(@PathVariable int id) {
 		return vehicleService.getVehicle(id);
 	}
 	
 	//get vehicles owned by specific client
-	@RequestMapping("/getvehicles/{id}")
+	@GetMapping("/vehicles/{id}")
 	public Stream<Vehicle> getVehicles(@PathVariable int id) {
 		return vehicleService.getVehicles(id);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/addvehicle")
+	@PostMapping("/vehicle")
 	public void addVehicle(@RequestBody Vehicle v) {
 		vehicleService.addVehicle(v);
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT, value="/updatevehicle/{id}")
+	@PutMapping("/vehicle/{id}")
 	public void updatePayment(@RequestBody Vehicle v, @PathVariable int id) {
 		vehicleService.updateVehicle(id, v);
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE, value="/deletevehicle/{id}")
+	@DeleteMapping("/vehicle/{id}")
 	public void deletePayment(@PathVariable int id) {
 		vehicleService.deleteVehicle(id);
 	}
