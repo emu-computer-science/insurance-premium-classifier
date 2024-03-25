@@ -34,19 +34,18 @@
   .container{
    display:flex;
     margin: 0 auto;
-    width: 800px;
+    width: auto;
     justify-content: center;
   }
 
   .claims{
     background-color: white;
-    display:flex;
     border-radius: 7px;
     width: 150px;
     height: 160px;
     margin-left: 100px;
     margin-right: 100px;
-    justify-content: center;
+    text-align: center;
   }
 
   .buttons{
@@ -68,9 +67,11 @@
 
 
   }
-  p{
+  .claims p{
     font-size:20px;
-    text-align: center;
+    margin:auto;
+    
+    
   }
   .numValue{
     font-weight: bold;

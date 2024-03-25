@@ -25,11 +25,11 @@ const EmployeeDashboard= () =>{
          <div className = {styles.head}>Hello Employee</div>
          <div className = {styles.container}>
          <div className = {styles.claims}>
-                <p className = {styles.boxtitle}>Missed Payments</p>
+               <h2>Missed Payments</h2>
                 <p className = {styles.numValue}>0</p>
             </div>
             <div className = {styles.claims}>
-                <p>Claims</p>
+               <h2>Claims</h2>
                 <p className = {styles.numValue}>0</p>
             </div>
          </div>
