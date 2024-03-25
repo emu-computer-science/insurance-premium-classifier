@@ -18,6 +18,7 @@ import UserMissedPayments from './components/employee/users-missed-payments/User
 import ViewAllUsers from './components/employee/view-all-users/ViewAllUsers'
 import ViewAllVehicles from './components/employee/view-all-vehicles/ViewAllVehicles'
 import './App.css'
+import Contact from './components/home/Contact';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -41,6 +42,7 @@ function App() {
         <Route path='/users-missed-payments' element={<UserMissedPayments/>} />
         <Route path='/view-all-users' element={<ViewAllUsers/>} />
         <Route path='/view-all-vehicles' element={<ViewAllVehicles/>} />
+        <Route path= '/contact' element ={<Contact />} />
       </Routes>
     </Router>
   )

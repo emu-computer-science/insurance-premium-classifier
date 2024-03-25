@@ -21,3 +21,17 @@ export const Navbar2 = () => {
 </nav>
   )
 };
+
+export const Navbar3 = () => {
+  return (
+<nav className={styles.navbar3}>
+
+<div className={styles.navLinks}>
+<Link to="/create-claim" className={styles.white2} >Claim</Link>
+<Link to="/user-info-quote" className={styles.white2} >Quote</Link>
+<Link to="/login" className= {styles.white2} >Login</Link>
+<Link to="/contact" className= {styles.white2}>Contact Us</Link>
+</div>
+</nav>
+  )
+};

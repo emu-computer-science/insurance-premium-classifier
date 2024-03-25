@@ -40,12 +40,13 @@
 
   .claims{
     background-color: white;
-    display:inline-block;
+    display:flex;
     border-radius: 7px;
     width: 150px;
     height: 160px;
     margin-left: 100px;
     margin-right: 100px;
+    justify-content: center;
   }
 
   .buttons{
