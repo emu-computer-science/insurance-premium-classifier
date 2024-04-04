@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/home/Home'
 import Loginc from './components/user/loginc/Loginc'
 import Register from './components/user/register/Register'
+import Register2 from './components/user/register/Register2';
 import CreateClaim from './components/user/create-a-claim/CreateClaim'
 import UserAddVehicle from './components/user/user-add-vehicle/UserAddVehicle'
 import UserBill from './components/user/user-bill/UserBill'
@@ -16,19 +17,18 @@ import EmployeeDashboard from './components/employee/employee-dashboard/Employee
 import UserMissedPayments from './components/employee/users-missed-payments/UserMissedPayments'
 import ViewAllUsers from './components/employee/view-all-users/ViewAllUsers'
 import ViewAllVehicles from './components/employee/view-all-vehicles/ViewAllVehicles'
-
-
 import './App.css'
+import Contact from './components/home/Contact';
 
 function App() {
   const [count, setCount] = useState(0)
-
   return (
     <Router>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Loginc />} />
         <Route path='/sign-up' element={<Register />} />
+        <Route path="/register2" element={<Register2 />} />
         <Route path='/create-claim' element={<CreateClaim/>} />
         <Route path='/user-add-vehicle' element={<UserAddVehicle/>} />
         <Route path='/user-bill' element={<UserBill/>} />
@@ -42,6 +42,7 @@ function App() {
         <Route path='/users-missed-payments' element={<UserMissedPayments/>} />
         <Route path='/view-all-users' element={<ViewAllUsers/>} />
         <Route path='/view-all-vehicles' element={<ViewAllVehicles/>} />
+        <Route path= '/contact' element ={<Contact />} />
       </Routes>
     </Router>
   )

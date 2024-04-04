@@ -1,38 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import {Navbar1} from '../../navbar1/Navbar1.jsx';
+import styles from './Register.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/register2');
+  };
   return (
-    <>
-    <body>
-    <div className="container">
-       <h2 className="fw-bold mb-4">Create Account</h2>
-        <input type="text" className="form-control" placeholder="First Name" />
-        <input type="text" className="form-control" placeholder="Last Name" />
-        <input type="text" inputMode="numeric" className="form-control" placeholder="(XXX) XXX-XXXX"  mask="(000) 000-0000" />
-        <input type="text" className="form-control" placeholder="Email" />
-        <input type="text" className="form-control" placeholder="Address" />
-        <input type="text" className="form-control" placeholder="City" />
-        <input type="text" className="form-control" placeholder="Zipcode" />
-        <input type="password" className="form-control" placeholder="Password" />
-        <input type="password" className="form-control" placeholder=" Confirm Password" />
-        <p style={{textAlign: 'left', marginBottom: '10px'}}>
-          * Must be at least 16 characters <br />
-          * Must contain an upper case character <br />
-          * Must contain a lower case character <br />
-          * Must contain at least one number <br />
-          * Must contain at least one special character
-        </p>
-        
-        <button className="btn btn-primary" type="submit">Create New Account</button>        
-        <div className="error-Validation">
-            <p>{/* This is where you should render your error message */}</p>
+    <div>
+    <Navbar1/>
+    <div className={styles.pinkElipse}></div>
+    <div className={styles.blueCircle}></div>
+    <div className={styles.registerContainer}>
+      <form className={styles.registrationForm}>
+        <input type="number" className={styles.inputField} placeholder="Member ID" />
+        <input type="text" className={styles.inputField} placeholder="First Name" />
+        <input type="text" className={styles.inputField} placeholder="Last Name" />
+        <input type="text" className={styles.inputField} placeholder="Date of Birth" />
+        <input type="tel" className={styles.inputField} placeholder="Phone Number" />
+        <input type="email" className={styles.inputField} placeholder="Email" />
+        <button type="button" className={styles.next} onClick={handleClick}>Next</button>
+        </form>
         </div>
-        <p className="mt-3"><Link to="/">Back to Dashboard</Link></p>
-    </div> 
-    </body>
-    </>
-  );
+        </div>
+  )
 }
 
 export default Register;
