@@ -1,5 +1,8 @@
 package com.group1.ipc.dtos;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 public class PaymentDTO {
     private int id;
     private BigDecimal amount;
@@ -37,11 +40,4 @@ public class PaymentDTO {
         this.missed = missed;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
 }
