@@ -7,7 +7,7 @@ const UserInfoQuote= () => {
   const navigateVehicleQuote = useNavigate();
   const handleVehicleQuote=() =>
   {
-    navigateVehicleQuote('/user-vehicle-quote');
+    navigateVehicleQuote('vehicle-quote');
   }
 return (
     <div>

@@ -32,6 +32,16 @@
   margin-top: 200px;
 }
 
+.loginForm div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.loginForm label {
+  color: white;
+}
+
 .inputField {
   font-family: Inter, sans-serif;
   border-radius: 7px;
@@ -41,7 +51,7 @@
   background-color: #fff;
   margin-bottom:30px;
   width: 500px;
-  color: #727272;
+  color: #333333;
   font-weight: 500;
   padding: 20px 0px 20px 40px;
   }

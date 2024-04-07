@@ -14,12 +14,10 @@ const Register = () => {
     <div className={styles.blueCircle}></div>
     <div className={styles.registerContainer}>
       <form className={styles.registrationForm}>
-        <input type="number" className={styles.inputField} placeholder="Member ID" />
-        <input type="text" className={styles.inputField} placeholder="First Name" />
-        <input type="text" className={styles.inputField} placeholder="Last Name" />
+      <input type="email" className={styles.inputField} placeholder="Email" />
         <input type="text" className={styles.inputField} placeholder="Date of Birth" />
-        <input type="tel" className={styles.inputField} placeholder="Phone Number" />
-        <input type="email" className={styles.inputField} placeholder="Email" />
+        <input type="password" className={styles.inputField} placeholder="Password" />
+        
         <button type="button" className={styles.next} onClick={handleClick}>Next</button>
         </form>
         </div>
