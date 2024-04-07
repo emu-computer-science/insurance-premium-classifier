@@ -1,6 +1,7 @@
 package com.group1.ipc.exceptions;
 
 
+import org.apache.coyote.BadRequestException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.group1.ipc.dtos.ErrorDTO;
 import com.group1.ipc.dtos.ExceptionDTO;
 
 @ControllerAdvice
@@ -21,5 +23,10 @@ public class GlobalExceptionHandler {
 		
 		String message = "An unknown error occurred. Please try again later.";
 		return new ResponseEntity<>(new ExceptionDTO(message), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@ExceptionHandler(BadRequestException.class)
+	public ResponseEntity<ErrorDTO> handleBadRequestException(Exception ex) {
+		return new ResponseEntity<>(new ErrorDTO(ex.getMessage()), HttpStatus.UNAUTHORIZED);
 	}
 }

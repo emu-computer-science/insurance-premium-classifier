@@ -10,7 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -22,6 +21,8 @@ public class Client {
 	private String address;
 	private String firstName;
 	private String lastName;
+	private String email;
+	private String password;
 	
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	public Employee employee;
@@ -83,6 +84,22 @@ public class Client {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
