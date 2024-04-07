@@ -43,11 +43,4 @@ public class PaymentDTO {
         this.missed = missed;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
 }

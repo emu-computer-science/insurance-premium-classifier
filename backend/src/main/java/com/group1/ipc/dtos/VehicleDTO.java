@@ -11,6 +11,7 @@ public class VehicleDTO {
     private int miles;
     private String plate;
     private Client client;
+    
     public int getId() {
         return id;
     }

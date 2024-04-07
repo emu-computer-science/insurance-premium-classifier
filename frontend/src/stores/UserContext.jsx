@@ -1,7 +1,10 @@
 import { createContext } from "react";
 
 const UserContext = createContext({
-    user: {}
+    loggedIn: false,
+
+    login: async (formData) => {},
+    logout: async () => {}
 })
 
 export default UserContext;
