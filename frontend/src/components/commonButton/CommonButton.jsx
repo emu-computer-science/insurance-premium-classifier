@@ -10,7 +10,7 @@ export const LinkButton = ({to, children, className }) => {
 };
 export const HomeLinkButton = ({ className}) => {
   return (
-    <Link to = '/user-dashboard' className={`${styles.homeLinkButton} ${className}`} >
+    <Link to = '/user/dashboard' className={`${styles.homeLinkButton} ${className}`} >
       Home
     </Link>
   );

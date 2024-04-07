@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 import {Navbar2} from '../../navbar1/Navbar1.jsx';
 import styles from "./EmployeeDashboard.module.css";
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import UserContext from '../../../stores/UserContext.jsx'
 
 const EmployeeDashboard= () =>{
-    
     const navigate = useNavigate();
     const sendToView = () => {
     navigate('/view-all-users');

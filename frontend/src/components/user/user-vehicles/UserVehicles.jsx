@@ -13,7 +13,7 @@ const UserInfoQuote= () => {
 const navigateAddVehicle = useNavigate();
 const handleAddVehicle=() =>
 {
-  navigateAddVehicle('/user-add-vehicle');
+  navigateAddVehicle('add-vehicle');
 }
 return (
     <div>

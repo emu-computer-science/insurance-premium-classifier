@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.group1.ipc.dtos.ErrorDTO;
+import com.group1.ipc.dtos.MessageDTO;
 import com.group1.ipc.dtos.ExceptionDTO;
 
 @ControllerAdvice
@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
 	}
 	
 	@ExceptionHandler(BadRequestException.class)
-	public ResponseEntity<ErrorDTO> handleBadRequestException(Exception ex) {
-		return new ResponseEntity<>(new ErrorDTO(ex.getMessage()), HttpStatus.UNAUTHORIZED);
+	public ResponseEntity<MessageDTO> handleBadRequestException(Exception ex) {
+		return new ResponseEntity<>(new MessageDTO(ex.getMessage()), HttpStatus.UNAUTHORIZED);
 	}
 }

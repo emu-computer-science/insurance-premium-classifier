@@ -1,10 +1,10 @@
 package com.group1.ipc.dtos;
 
-public class ErrorDTO {
+public class MessageDTO {
 
 	private String message;
 	
-	public ErrorDTO(String message) {
+	public MessageDTO(String message) {
 		this.message = message;
 	}
 
