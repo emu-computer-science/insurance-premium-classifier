@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
+import drivingImg from '../../../Images/people-driving-car.jpg'
 import { Navbar1, Navbar3 } from '../navbar1/Navbar1.jsx';
 import BottomSection from './BottomSection.jsx';
 
@@ -11,7 +12,7 @@ const Home = () => {
             <div className={styles.blueCircle}></div>
             <Navbar3 />
             <div className = {styles.imgContainer}>
-                <img src = "../images/people-driving-car.jpg" className= {styles.topPicture} />
+                <img src={drivingImg} className= {styles.topPicture} />
             </div>
             <div className ={styles.leftBlurb}>
                 <h1>We provide the best value <b>insurance</b></h1>
@@ -32,7 +33,6 @@ const Home = () => {
                         <option value = "Travel">Travel</option>
                         <option value = "Pet">Pet</option>
                     </select> */}
-                   
                     <input type = "submit" value = "Get a quote" className= {styles.submitButton} />
                 </form>
             </div>

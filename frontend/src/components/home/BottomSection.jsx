@@ -1,7 +1,8 @@
 import styles from './BottomSection.module.css';
+import bottomCar from '../../../Images/bottom-car.jpg'
+
 const BottomSection = () => {
     return (
-        <>
         <div className = {styles.Container}>
             <div className= {styles.InfoBlurb}>
                 <h2 className={styles.BlurbTitle}>Car insurance</h2>
@@ -15,12 +16,12 @@ const BottomSection = () => {
                 <div className={styles.BackgroundSquare}></div>
                
                 <div className={styles.picture}>
-                    <img src = "../images/bottom-car.jpg" />
+                    <img src ={bottomCar} />
                 </div>
                 <div className={styles.BackgroundSquareOutline}></div>
             </div>
         </div>
-        </>
     )
 }
+
 export default BottomSection
