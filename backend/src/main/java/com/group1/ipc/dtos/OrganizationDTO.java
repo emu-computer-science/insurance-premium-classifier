@@ -1,5 +1,9 @@
 package com.group1.ipc.dtos;
 
+import com.group1.ipc.entities.Employee;
+
+import java.util.List;
+
 public class OrganizationDTO {
     private int id;
     private String name;
@@ -36,7 +40,6 @@ public class OrganizationDTO {
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
-    private Client client;
 
 
 }

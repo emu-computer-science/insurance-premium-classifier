@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.group1.ipc.dtos.ClaimDTO;
+import com.group1.ipc.entities.Client;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.group1.ipc.entities.Claim;
@@ -14,7 +17,7 @@ import com.group1.ipc.services.interfaces.IClaimService;
 public class ClaimService implements IClaimService {
 
 	private final IClaimRepository claimRepository;
-	
+
 	public ClaimService(IClaimRepository claimRepository) {
 		this.claimRepository = claimRepository;
 	}
@@ -26,15 +29,30 @@ public class ClaimService implements IClaimService {
 	}
 	
 	public Optional<Claim> getClaim(int id) {
+
 		return claimRepository.findById(id);
+
 	}
 	
-	public void addClaim(Claim claim) {
+	public void addClaim(ClaimDTO claimDTO) {
+		Claim claim = new Claim();
+		claim.setClaimDate(claimDTO.getClaimDate());
+		claim.setClient(claimDTO.getClient());
+		claim.setVehicle(claimDTO.getVehicle());
 		claimRepository.save(claim);
 	}
 
-	public void updateClaim(int id, Claim claim) {
-		claimRepository.save(claim);	
+	public void updateClaim(int id, ClaimDTO claimDTO) {
+
+		Optional<Claim> optionalClaim = claimRepository.findById(id);
+		if (optionalClaim.isPresent()) {
+			Claim claim = new Claim();
+			claim.setClaimDate(claimDTO.getClaimDate());
+			claimRepository.save(claim);
+		} else {
+			throw new EntityNotFoundException("Claim with ID " + id + " not found");
+		}
+
 	}
 	
 	public void deleteClaim(int id) {

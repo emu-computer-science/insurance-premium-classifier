@@ -2,6 +2,8 @@ package com.group1.ipc.controllers;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.group1.ipc.dtos.ClaimDTO;
 import org.springframework.web.bind.annotation.*;
 import com.group1.ipc.entities.Claim;
 import com.group1.ipc.services.interfaces.IClaimService;
@@ -27,12 +29,12 @@ public class ClaimController {
 	}
 	
 	@PostMapping("/claim")
-	public void addClaim(@RequestBody Claim c) {
+	public void addClaim(@RequestBody ClaimDTO c) {
 		claimService.addClaim(c);
 	}
 	
 	@PutMapping("/claim/{id}")
-	public void updateClaim(@RequestBody Claim c, @PathVariable int id) {
+	public void updateClaim(@RequestBody ClaimDTO c, @PathVariable int id) {
 		claimService.updateClaim(id, c);
 	}
 	

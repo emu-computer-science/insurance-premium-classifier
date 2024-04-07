@@ -1,9 +1,15 @@
 package com.group1.ipc.dtos;
 
+import com.group1.ipc.entities.Client;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 public class PaymentDTO {
     private int id;
     private BigDecimal amount;
     private LocalDate dueDate;
+    private Client client;
     private boolean missed;
     public int getId() {
         return id;

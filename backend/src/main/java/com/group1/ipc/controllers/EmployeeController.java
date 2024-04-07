@@ -2,6 +2,8 @@ package com.group1.ipc.controllers;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.group1.ipc.dtos.AddEmployeeDTO;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,13 +37,13 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/emp")
-	public void addEmp(@RequestBody Employee emp) {
-		employeeService.addEmp(emp);
+	public void addEmp(@RequestBody AddEmployeeDTO addEmpDTO) {
+		employeeService.addEmp(addEmpDTO);
 	}
-	
+
 	@PutMapping("/emp/{id}")
-	public void updateEmp(@RequestBody Employee emp, @PathVariable int id) {
-		employeeService.updateEmp(id, emp);
+	public void updateEmp(@RequestBody AddEmployeeDTO addEmpDTO, @PathVariable int id) {
+		employeeService.updateEmp(id, addEmpDTO);
 	}
 	
 	@DeleteMapping("/emp/{id}")

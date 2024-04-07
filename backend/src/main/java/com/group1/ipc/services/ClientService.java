@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.group1.ipc.dtos.ClientDTO;
+import com.group1.ipc.entities.Employee;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.group1.ipc.entities.Client;
@@ -29,12 +32,28 @@ public class ClientService implements IClientService {
 		return clientRepository.findById(id);
 	}
 	
-	public void addClient(Client client) {
+	public void addClient(ClientDTO clientDTO) {
+		Client client=new Client();
+		client.setFirstName(clientDTO.getFirstName());
+		client.setLastName(clientDTO.getLastName());
+		client.setAddress(clientDTO.getAddress());
+		client.setEmployee(clientDTO.getEmployee());
 		clientRepository.save(client);
 	}
 
-	public void updateClient(int id, Client client) {
-		clientRepository.save(client);	
+	public void updateClient(int id, ClientDTO clientDTO) {
+		Optional<Client> optionalClient = clientRepository.findById(id);;
+		if (optionalClient.isPresent()) {
+			Client client=new Client();
+			client.setFirstName(clientDTO.getFirstName());
+			client.setLastName(clientDTO.getLastName());
+			client.setAddress(clientDTO.getAddress());
+			client.setEmployee(clientDTO.getEmployee());
+			clientRepository.save(client);
+		} else {
+			throw new EntityNotFoundException("Employee with ID " + id + " not found");
+		}
+
 	}
 	
 	public void deleteClient(int id) {

@@ -2,6 +2,8 @@ package com.group1.ipc.controllers;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.group1.ipc.dtos.ClientDTO;
 import org.springframework.web.bind.annotation.*;
 import com.group1.ipc.entities.Client;
 import com.group1.ipc.services.ClientService;
@@ -28,13 +30,13 @@ public class ClientController {
 	}
 	
 	@PostMapping("/client")
-	public void addClient(@RequestBody Client client) {
-		clientService.addClient(client);
+	public void addClient(@RequestBody ClientDTO clientDTO) {
+		clientService.addClient(clientDTO);
 	}
 	
 	@PutMapping("/client/{id}")
-	public void updateClient(@RequestBody Client client, @PathVariable int id) {
-		clientService.updateClient(id, client);
+	public void updateClient(@RequestBody ClientDTO clientDTO, @PathVariable int id) {
+		clientService.updateClient(id, clientDTO);
 	}
 	
 	@DeleteMapping("/client/{id}")

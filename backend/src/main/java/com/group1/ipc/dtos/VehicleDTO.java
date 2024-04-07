@@ -1,5 +1,7 @@
 package com.group1.ipc.dtos;
 
+import com.group1.ipc.entities.Client;
+
 public class VehicleDTO {
     private int id;
     private String vin;

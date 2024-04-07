@@ -3,6 +3,8 @@ package com.group1.ipc.controllers;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
+
+import com.group1.ipc.dtos.VehicleDTO;
 import org.springframework.web.bind.annotation.*;
 import com.group1.ipc.entities.Vehicle;
 import com.group1.ipc.services.interfaces.IVehicleService;
@@ -35,13 +37,13 @@ public class VehicleController {
 	}
 	
 	@PostMapping("/vehicle")
-	public void addVehicle(@RequestBody Vehicle v) {
-		vehicleService.addVehicle(v);
+	public void addVehicle(@RequestBody VehicleDTO vDTO) {
+		vehicleService.addVehicle(vDTO);
 	}
 	
 	@PutMapping("/vehicle/{id}")
-	public void updatePayment(@RequestBody Vehicle v, @PathVariable int id) {
-		vehicleService.updateVehicle(id, v);
+	public void updatePayment(@RequestBody VehicleDTO vDTO, @PathVariable int id) {
+		vehicleService.updateVehicle(id, vDTO);
 	}
 	
 	@DeleteMapping("/vehicle/{id}")

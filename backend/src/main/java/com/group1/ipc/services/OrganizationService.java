@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import com.group1.ipc.dtos.OrganizationDTO;
+import com.group1.ipc.entities.Client;
+import com.group1.ipc.entities.Employee;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.group1.ipc.entities.Organization;
@@ -30,12 +34,24 @@ public class OrganizationService implements IOrganizationService {
 		return organizationRepository.findById(id);
 	}
 	
-	public void addOrg(Organization org) {
+	public void addOrg(OrganizationDTO orgDTO) {
+		Organization org=new Organization();
+		org.setName(orgDTO.getName());
+		org.setAddress(orgDTO.getAddress());
 		organizationRepository.save(org);
 	}
 
-	public void updateOrg(int id, Organization org) {
-		organizationRepository.save(org);	
+	public void updateOrg(int id, OrganizationDTO orgDTO) {
+		Optional<Organization> optionalOrganization = organizationRepository.findById(id);
+		if (optionalOrganization.isPresent()) {
+			Organization org = optionalOrganization.get();
+			org.setName(orgDTO.getName());
+			org.setAddress(orgDTO.getAddress());
+			organizationRepository.save(org);
+		} else {
+			throw new EntityNotFoundException("Organization with ID " + id + " not found");
+		}
+
 	}
 	
 	public void deleteOrg(int id) {

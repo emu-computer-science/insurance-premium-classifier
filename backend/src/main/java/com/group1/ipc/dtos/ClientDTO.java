@@ -1,8 +1,6 @@
 package com.group1.ipc.dtos;
 
-import com.group1.ipc.entities.Employee;
-import com.group1.ipc.entities.Payment;
-import com.group1.ipc.entities.Vehicle;
+import com.group1.ipc.entities.*;
 
 import java.util.List;
 
@@ -16,10 +14,12 @@ public class ClientDTO {
 
     public List<Vehicle> vehicles;
 
-    public List<Payment> payments;
-
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getAddress() {
@@ -38,5 +38,15 @@ public class ClientDTO {
         return employee;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }

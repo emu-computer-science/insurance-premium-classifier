@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.group1.ipc.dtos.AddEmployeeDTO;
+import com.group1.ipc.dtos.EmployeeDTO;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.group1.ipc.entities.Employee;
@@ -29,15 +32,35 @@ public class EmployeeService implements IEmployeeService {
 		return employeeRepository.findById(id);
 	}
 	
-	public void addEmp(Employee emp) {
+	public void addEmp(AddEmployeeDTO addEmpDTO) {
+		Employee emp=new Employee();
+		emp.setFirstName(addEmpDTO.getFirstName());
+		emp.setLastName(addEmpDTO.getLastName());
+		emp.setId(addEmpDTO.getId());
+		emp.setManager(addEmpDTO.getManager());
+		emp.setOrganization(addEmpDTO.getOrganization());
 		employeeRepository.save(emp);
 	}
 
-	public void updateEmp(int id, Employee emp) {
-		employeeRepository.save(emp);	
+
+
+	public void updateEmp(int id, AddEmployeeDTO addEmpDTO) {
+		Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+		if (optionalEmployee.isPresent()) {
+			Employee emp = optionalEmployee.get();
+			emp.setFirstName(addEmpDTO.getFirstName());
+			emp.setLastName(addEmpDTO.getLastName());
+			emp.setManager(addEmpDTO.getManager());
+			employeeRepository.save(emp);
+		} else {
+			throw new EntityNotFoundException("Employee with ID " + id + " not found");
+		}
 	}
+
 	
 	public void deleteEmp(int id) {
 		employeeRepository.deleteById(id);
 	}
+
+
 }

@@ -2,6 +2,8 @@ package com.group1.ipc.controllers;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.group1.ipc.dtos.PaymentDTO;
 import org.springframework.web.bind.annotation.*;
 import com.group1.ipc.entities.Client;
 import com.group1.ipc.entities.Payment;
@@ -27,13 +29,13 @@ public class PaymentController {
 	}
 	
 	@PostMapping("/payment")
-	public void addPayment(@RequestBody Payment pay) {
-		paymentService.addPayment(pay);
+	public void addPayment(@RequestBody PaymentDTO payDTO) {
+		paymentService.addPayment(payDTO);
 	}
 	
 	@PutMapping("/payment/{id}")
-	public void updatePayment(@RequestBody Payment pay, @PathVariable int id) {
-		paymentService.updatePayment(id, pay);
+	public void updatePayment(@RequestBody PaymentDTO payDTO, @PathVariable int id) {
+		paymentService.updatePayment(id, payDTO);
 	}
 	
 	@DeleteMapping("/payment/{id}")

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.group1.ipc.dtos.PaymentDTO;
+import com.group1.ipc.entities.Organization;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.group1.ipc.entities.Client;
@@ -29,12 +32,27 @@ public class PaymentService implements IPaymentService {
 		return paymentRepository.findById(id);
 	}
 	
-	public void addPayment(Payment pay) {
+	public void addPayment(PaymentDTO payDTO) {
+		Payment pay=new Payment();
+		pay.setAmount(payDTO.getAmount());
+		pay.setClient(payDTO.getClient());
+		pay.setMissed(payDTO.isMissed());
+		pay.setDueDate(payDTO.getDueDate());
 		paymentRepository.save(pay);
 	}
 
-	public void updatePayment(int id, Payment pay) {
-		paymentRepository.save(pay);	
+	public void updatePayment(int id, PaymentDTO payDTO) {
+		Optional<Payment> optionalPayment = paymentRepository.findById(id);
+		if (optionalPayment.isPresent()) {
+			Payment pay = optionalPayment.get();
+			pay.setAmount(payDTO.getAmount());
+			pay.setClient(payDTO.getClient());
+			pay.setMissed(payDTO.isMissed());
+			pay.setDueDate(payDTO.getDueDate());
+			paymentRepository.save(pay);
+		} else {
+			throw new EntityNotFoundException("Payment with ID " + id + " not found");
+		}
 	}
 	
 	public void deletePayment(int id) {
