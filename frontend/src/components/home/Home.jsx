@@ -1,10 +1,30 @@
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 import styles from './Home.module.css';
 import { Navbar1, Navbar3 } from '../navbar1/Navbar1.jsx';
 import BottomSection from './BottomSection.jsx';
-
-
+import EmployeeService from '../../services/EmployeeService';
+import Employee from '../../models/Employee';
+import React, { useState, useEffect } from 'react';
 const Home = () => {
+    const [employees, setEmployees] = useState([]);
+    const params = useParams();
+    useEffect(() => {
+        const fetchEmployees = async () => {
+        try{
+            const employeeService = new EmployeeService();
+            const data = await employeeService.getAllEmployees();
+            const employeeList = data.map(employee => new Employee(employee.id, employee.firstName, employee.lastName,employee.manager,employee.organizaiton));
+            setEmployees(employeeList);
+            console.log(employeeList+"adssadadsads");
+            }
+            catch(error) {
+                console.error('Error fetching Employees:', error);
+            };
+        }
+       fetchEmployees();
+    }, [params]);
+
+
     return (
         <div className = {styles.page}>
             <div className={styles.pinkEllipse}></div>
@@ -35,6 +55,17 @@ const Home = () => {
                    
                     <input type = "submit" value = "Get a quote" className= {styles.submitButton} />
                 </form>
+
+                <div>
+            <h2>User List</h2>
+            <ul>
+                {employees.map(employee => (
+                    <li key={employee.id}>
+                        <strong>Name:</strong> {employee.firstName}
+                    </li>
+                ))}
+            </ul>
+        </div>
             </div>
                 <BottomSection />
 {/*             <div className={styles.container}>
@@ -42,6 +73,8 @@ const Home = () => {
                 <Link className={styles.btn} to="/sign-up">Signup</Link>
             </div> */}
         </div>
+
+        
     )
 }
 
