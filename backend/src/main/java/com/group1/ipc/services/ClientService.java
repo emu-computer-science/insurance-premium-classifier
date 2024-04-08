@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.group1.ipc.dtos.ClientDTO;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.group1.ipc.entities.Client;
@@ -38,7 +39,8 @@ public class ClientService implements IClientService {
 		client.setAddress(clientDTO.getAddress());
 		client.setEmail(clientDTO.getEmail());
 		client.setDob(clientDTO.getDob());
-		client.setPassword(clientDTO.getPassword());
+
+		client.setPassword(new BCryptPasswordEncoder().encode(clientDTO.getPassword()));;
 		clientRepository.save(client);
 	}
 
