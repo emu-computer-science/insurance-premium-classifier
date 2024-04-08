@@ -24,7 +24,7 @@ public class Client {
 	private String email;
 	private String password;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	public Employee employee;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="client")

@@ -23,7 +23,7 @@ public class Vehicle {
 	private int miles;
 	private String plate;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="client_id")
 	private Client client;
 	

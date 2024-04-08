@@ -23,7 +23,7 @@ public class Claim {
 	@JoinColumn(name="client_id")
 	private Client client;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="vehicle_id")
 	private Vehicle vehicle;
 	
