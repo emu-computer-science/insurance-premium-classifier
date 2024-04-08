@@ -14,9 +14,14 @@ class ClientService {
             });
   }
 
-  getClientsById(id) {
-    return this.employees.find(employees => employees.id === id);
-  }
+  getClientById(id) {
+    return axios.get(`http://localhost:8080/api/clients/client/${id}`)
+        .then(response => response.data)
+        .catch(error => {
+            console.error('Error fetching client by ID:', error);
+            throw error; // Propagate error to caller
+        });
+}
 
   getAllClients() {
     return axios.get('http://localhost:8080/api/clients/client')
