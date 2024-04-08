@@ -1,16 +1,15 @@
 package com.group1.ipc.dtos;
 
-<<<<<<< HEAD
+
 import com.group1.ipc.entities.Employee;
 
 import java.util.List;
 
-=======
+
 import java.util.List;
 
 import com.group1.ipc.entities.Employee;
 
->>>>>>> main
 public class OrganizationDTO {
     private int id;
     private String name;
@@ -48,9 +47,6 @@ public class OrganizationDTO {
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> main
 
 }

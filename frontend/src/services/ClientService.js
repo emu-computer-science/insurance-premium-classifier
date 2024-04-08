@@ -5,21 +5,24 @@ class ClientService {
     this.employees = [];
   }
 
-  addEmployee(firstName,lastName,manager,organizaiton) {
-    const newEmployee = new Employee(firstName,lastName,manager,organizaiton);
-    this.employees.push(newEmployee);
-    return newEmployee;
+  addClient(client) {
+      return axios.post('http://localhost:8080/api/clients/client', client)
+            .then(response => response.data)
+            .catch(error => {
+                console.error('Error adding user:', error);
+                throw error; // Propagate error to caller
+            });
   }
 
-  getEmployeesById(id) {
+  getClientsById(id) {
     return this.employees.find(employees => employees.id === id);
   }
 
-  getAllEmployees() {
-    return axios.get('http://localhost:8080/api/employees/emp')
+  getAllClients() {
+    return axios.get('http://localhost:8080/api/clients/client')
         .then(response => response.data)
         .catch(error => {
-            console.error('Error fetching Employees:', error);
+            console.error('Error fetching Clients:', error);
             throw error; // Propagate error to caller
         });
 }

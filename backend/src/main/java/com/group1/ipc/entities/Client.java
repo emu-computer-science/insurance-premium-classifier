@@ -1,5 +1,6 @@
 package com.group1.ipc.entities;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Client {
@@ -23,6 +25,9 @@ public class Client {
 	private String lastName;
 	private String email;
 	private String password;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dateofBirth;
 	
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	public Employee employee;
@@ -121,5 +126,12 @@ public class Client {
 				&& Objects.equals(firstName, other.firstName) && id == other.id
 				&& Objects.equals(lastName, other.lastName);
 	}
-	
+
+	public LocalDate getDateofBirth() {
+		return dateofBirth;
+	}
+
+	public void setDateofBirth(LocalDate dateofBirth) {
+		this.dateofBirth = dateofBirth;
+	}
 }

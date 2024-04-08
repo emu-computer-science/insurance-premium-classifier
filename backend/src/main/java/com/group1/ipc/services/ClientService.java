@@ -37,7 +37,9 @@ public class ClientService implements IClientService {
 		client.setFirstName(clientDTO.getFirstName());
 		client.setLastName(clientDTO.getLastName());
 		client.setAddress(clientDTO.getAddress());
-		client.setEmployee(clientDTO.getEmployee());
+		client.setEmail(clientDTO.getEmail());
+		client.setDateofBirth(clientDTO.getDateofBirth());
+		client.setPassword(clientDTO.getPassword());
 		clientRepository.save(client);
 	}
 
@@ -49,6 +51,7 @@ public class ClientService implements IClientService {
 			client.setLastName(clientDTO.getLastName());
 			client.setAddress(clientDTO.getAddress());
 			client.setEmployee(clientDTO.getEmployee());
+			client.setDateofBirth(clientDTO.getDateofBirth());
 			clientRepository.save(client);
 		} else {
 			throw new EntityNotFoundException("Employee with ID " + id + " not found");

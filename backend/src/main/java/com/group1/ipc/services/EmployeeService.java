@@ -36,7 +36,8 @@ public class EmployeeService implements IEmployeeService {
 		Employee emp=new Employee();
 		emp.setFirstName(addEmpDTO.getFirstName());
 		emp.setLastName(addEmpDTO.getLastName());
-		emp.setId(addEmpDTO.getId());
+		emp.setEmail(addEmpDTO.getEmail());
+		emp.setPassword(addEmpDTO.getPassword());
 		emp.setManager(addEmpDTO.getManager());
 		emp.setOrganization(addEmpDTO.getOrganization());
 		employeeRepository.save(emp);
