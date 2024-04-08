@@ -27,7 +27,7 @@ public class Client {
 	private String password;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate dateofBirth;
+	private LocalDate dob;
 	
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	public Employee employee;
@@ -127,11 +127,11 @@ public class Client {
 				&& Objects.equals(lastName, other.lastName);
 	}
 
-	public LocalDate getDateofBirth() {
-		return dateofBirth;
+	public LocalDate getDob() {
+		return dob;
 	}
 
-	public void setDateofBirth(LocalDate dateofBirth) {
-		this.dateofBirth = dateofBirth;
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
 	}
 }

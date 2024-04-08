@@ -14,7 +14,7 @@ public class ClientDTO {
     public Employee employee;
 
     private String email;
-    private LocalDate dateofBirth;
+    private LocalDate dob;
     private String password;
 
     public List<Vehicle> vehicles;
@@ -72,11 +72,11 @@ public class ClientDTO {
         this.password = password;
     }
 
-    public LocalDate getDateofBirth() {
-        return dateofBirth;
+    public LocalDate getDob() {
+        return dob;
     }
 
-    public void setDateofBirth(LocalDate dateofBirth) {
-        this.dateofBirth = dateofBirth;
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
     }
 }

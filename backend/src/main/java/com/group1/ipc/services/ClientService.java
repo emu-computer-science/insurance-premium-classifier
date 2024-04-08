@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.group1.ipc.dtos.ClientDTO;
-import com.group1.ipc.entities.Employee;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +37,7 @@ public class ClientService implements IClientService {
 		client.setLastName(clientDTO.getLastName());
 		client.setAddress(clientDTO.getAddress());
 		client.setEmail(clientDTO.getEmail());
-		client.setDateofBirth(clientDTO.getDateofBirth());
+		client.setDob(clientDTO.getDob());
 		client.setPassword(clientDTO.getPassword());
 		clientRepository.save(client);
 	}
@@ -51,7 +50,7 @@ public class ClientService implements IClientService {
 			client.setLastName(clientDTO.getLastName());
 			client.setAddress(clientDTO.getAddress());
 			client.setEmployee(clientDTO.getEmployee());
-			client.setDateofBirth(clientDTO.getDateofBirth());
+			client.setDob(clientDTO.getDob());
 			clientRepository.save(client);
 		} else {
 			throw new EntityNotFoundException("Employee with ID " + id + " not found");

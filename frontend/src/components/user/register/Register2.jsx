@@ -1,8 +1,34 @@
 import {Navbar1} from '../../navbar1/Navbar1.jsx';
 import styles from"./Register.module.css"
 import { useNavigate } from 'react-router-dom';
+import Client from '../../../models/Client';
+import ClientService from '../../../services/ClientService';
+import React, { useState, useEffect } from 'react';
 
 const Register2 = () => {
+  const [client, setClient] = useState(new Client('', '', '', '','')); // Initialize with empty client
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (e) => {
+      const { name, value } = e.target;
+      setClient(prevClient => ({
+          ...prevClient,
+          [name]: value
+      }));
+  };
+
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+          const clientService = new ClientService();
+          await clientService.addUser(client);
+          setSuccessMessage('Client added successfully!');
+          setClient(new Client('', '', '', ''));
+      } catch (error) {
+          setErrorMessage('Error adding client. Please try again.');
+      }
+  };
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/login');

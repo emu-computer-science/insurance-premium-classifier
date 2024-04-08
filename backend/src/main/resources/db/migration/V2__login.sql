@@ -5,7 +5,7 @@ ALTER TABLE client
 ADD password varchar(200);
 
 ALTER TABLE client
-ADD dateofBirth DATE;
+ADD dob DATE;
 
 ALTER TABLE employee
 ADD email varchar(100);
