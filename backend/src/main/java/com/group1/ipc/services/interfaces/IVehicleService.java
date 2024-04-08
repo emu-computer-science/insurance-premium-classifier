@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import com.group1.ipc.dtos.VehicleDTO;
+import com.group1.ipc.entities.Client;
 import com.group1.ipc.entities.Vehicle;
 
 public interface IVehicleService {
@@ -13,9 +14,9 @@ public interface IVehicleService {
 
 	Stream<Vehicle> getVehicles(int id);
 
-	void addVehicle(VehicleDTO vDTO);
+	void addVehicle(VehicleDTO vDTO, Client client);
 
-	void updateVehicle(int id, VehicleDTO vDTO);
+	void updateVehicle(int id, VehicleDTO vDTO, Client client);
 
 	void deleteVehicle(int id);
 

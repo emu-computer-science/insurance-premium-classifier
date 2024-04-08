@@ -14,9 +14,9 @@ public interface IPaymentService {
 
 	Optional<Payment> getPayment(int id);
 
-	void updatePayment(int id, PaymentDTO payDTO);
+	void updatePayment(int id, PaymentDTO payDTO, Client client);
 
-	void addPayment(PaymentDTO payDTO);
+	void addPayment(PaymentDTO payDTO, Client client);
 
 	void deletePayment(int id);
 

@@ -19,7 +19,7 @@ public class Claim {
 	private int id;
 	private LocalDate claimDate;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="client_id")
 	private Client client;
 	

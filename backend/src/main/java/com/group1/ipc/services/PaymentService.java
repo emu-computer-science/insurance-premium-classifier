@@ -34,21 +34,21 @@ public class PaymentService implements IPaymentService {
 		return paymentRepository.findById(id);
 	}
 	
-	public void addPayment(PaymentDTO payDTO) {
+	public void addPayment(PaymentDTO payDTO, Client client) {
 		Payment pay=new Payment();
 		pay.setAmount(payDTO.getAmount());
-		pay.setClient(payDTO.getClient());
+		pay.setClient(client);
 		pay.setMissed(payDTO.isMissed());
 		pay.setDueDate(payDTO.getDueDate());
 		paymentRepository.save(pay);
 	}
 
-	public void updatePayment(int id, PaymentDTO payDTO) {
+	public void updatePayment(int id, PaymentDTO payDTO, Client client) {
 		Optional<Payment> optionalPayment = paymentRepository.findById(id);
 		if (optionalPayment.isPresent()) {
 			Payment pay = optionalPayment.get();
 			pay.setAmount(payDTO.getAmount());
-			pay.setClient(payDTO.getClient());
+			pay.setClient(client);
 			pay.setMissed(payDTO.isMissed());
 			pay.setDueDate(payDTO.getDueDate());
 			paymentRepository.save(pay);

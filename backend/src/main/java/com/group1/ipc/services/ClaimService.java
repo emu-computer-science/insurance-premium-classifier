@@ -34,20 +34,21 @@ public class ClaimService implements IClaimService {
 
 	}
 	
-	public void addClaim(ClaimDTO claimDTO) {
+	public void addClaim(ClaimDTO claimDTO, Client client) {
 		Claim claim = new Claim();
 		claim.setClaimDate(claimDTO.getClaimDate());
-		claim.setClient(claimDTO.getClient());
+		claim.setClient(client);
 		claim.setVehicle(claimDTO.getVehicle());
 		claimRepository.save(claim);
 	}
 
-	public void updateClaim(int id, ClaimDTO claimDTO) {
+	public void updateClaim(int id, ClaimDTO claimDTO, Client client) {
 
 		Optional<Claim> optionalClaim = claimRepository.findById(id);
 		if (optionalClaim.isPresent()) {
 			Claim claim = new Claim();
 			claim.setClaimDate(claimDTO.getClaimDate());
+			claim.setClient(client);
 			claimRepository.save(claim);
 		} else {
 			throw new EntityNotFoundException("Claim with ID " + id + " not found");
