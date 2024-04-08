@@ -2,6 +2,7 @@ package com.group1.ipc.controllers;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import com.group1.ipc.dtos.PaymentDTO;
 import org.springframework.web.bind.annotation.*;
@@ -41,5 +42,20 @@ public class PaymentController {
 	@DeleteMapping("/payment/{id}")
 	public void deletePayment(@PathVariable int id) {
 		paymentService.deletePayment(id);
+	}
+	
+	@GetMapping("/missed")
+	public int countAllMissedPayments() {
+		return paymentService.countAllMissedPayments();
+	}
+	
+	@GetMapping("/client/missed")
+	public List<Client> getAllMissedClients() {
+		return paymentService.getAllMissedClients();
+	}
+	
+	@GetMapping("/client/{id}")
+	public Stream<Payment> getAllPaymentsByUser(@PathVariable int id){
+		return paymentService.getAllPaymentsByUser(id);
 	}
 }

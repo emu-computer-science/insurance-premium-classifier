@@ -67,8 +67,6 @@ public class VehicleService implements IVehicleService {
 		} else {
 			throw new EntityNotFoundException("Payment with ID " + id + " not found");
 		}
-
-
 	}
 	
 	public void deleteVehicle(int id) {

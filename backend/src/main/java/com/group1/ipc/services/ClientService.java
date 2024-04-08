@@ -1,5 +1,6 @@
 package com.group1.ipc.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +43,7 @@ public class ClientService implements IClientService {
 	}
 
 	public void updateClient(int id, ClientDTO clientDTO) {
-		Optional<Client> optionalClient = clientRepository.findById(id);;
+		Optional<Client> optionalClient = clientRepository.findById(id);
 		if (optionalClient.isPresent()) {
 			Client client=new Client();
 			client.setFirstName(clientDTO.getFirstName());

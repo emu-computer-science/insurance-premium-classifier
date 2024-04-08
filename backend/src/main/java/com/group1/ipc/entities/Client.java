@@ -101,6 +101,14 @@ public class Client {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public void addPayment(Payment pay) {
+		this.payments.add(pay);
+	}
+	
+	public List<Payment> getPayment(){
+		return payments;
+	}
 
 	@Override
 	public int hashCode() {
