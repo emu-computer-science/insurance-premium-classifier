@@ -43,6 +43,13 @@
   margin-top: 200px;
 }
 
+.registrationForm p {
+    color: rgb(255, 81, 81);
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
 .inputField{
   font-family: Inter, sans-serif;
   border-radius: 7px;

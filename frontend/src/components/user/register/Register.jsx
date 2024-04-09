@@ -3,17 +3,15 @@ import styles from './Register.module.css';
 import { useNavigate } from 'react-router-dom';
 import Client from '../../../models/Client';
 import ClientService from '../../../services/ClientService';
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Register = () => {
     const navigate = useNavigate();
     const [client, setClient] = useState(new Client('', '', '', '', '', '', '')); // Initialize with empty client
-    const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log('Updated client:', { ...client, [name]: value });
         setClient(prevClient => ({
             ...prevClient,
             [name]: value
@@ -25,10 +23,9 @@ const Register = () => {
         try {
             const clientService = new ClientService();
             await clientService.addClient(client);
-            
             navigate('/user/dashboard')
         } catch (error) {
-            setErrorMessage('Error adding client. Please try again.');
+            setErrorMessage('Registration failed. Please try again.');
         }
     };
 
@@ -38,8 +35,8 @@ const Register = () => {
             <div className={styles.pinkElipse}></div>
             <div className={styles.blueCircle}></div>
             <div className={styles.registerContainer}>
-                {errorMessage ?? <p>{errorMessage}</p>}
                 <form onSubmit={handleSubmit} className={styles.registrationForm}>
+                    {errorMessage ? <p>{errorMessage}</p> : null}
                     <div>
                         <label>First Name:</label>
                         <input type="text" name="firstName" value={client.firstNames} className={styles.inputField} placeholder="First Name" onChange={handleChange} />
