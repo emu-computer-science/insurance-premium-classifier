@@ -13,7 +13,7 @@ const UserDashboard = () => {
       try{
           const clientService = new ClientService();
           const client  = await clientService.getUserInfo();
-          const clientList = new Client(client.id,client.address,client.firstName,client.lastName,client.email,client.dob,client.password,client.vehicles);
+          const clientList = new Client(client.id,client.address,client.firstName,client.lastName,client.email,client.password,client.dob,client.employee,client.vehicles,client.payments);
           setClients(clientList);
           localStorage.setItem('clientId', fetchedClient.id);
           console.log(client);
@@ -46,7 +46,3 @@ const UserDashboard = () => {
 }
 
 export default UserDashboard
-
-
-
-
