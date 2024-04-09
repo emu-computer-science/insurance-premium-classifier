@@ -35,7 +35,15 @@ public class PaymentDTO {
         this.dueDate = dueDate;
     }
 
-    public boolean isMissed() {
+    public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public boolean isMissed() {
         return missed;
     }
 

@@ -9,7 +9,7 @@ export const Navbar1 = () => {
         <Link to="/" className={styles.white}>IPC</Link>
         <div className={styles.navLinks}>
           <Link to="/user/create-claim" className={styles.white} >Claim</Link>
-          <Link to="/user/info-quote" className={styles.white} >Quote</Link>
+          <Link to="/quote" className={styles.white} >Quote</Link>
           <Link to="/login" className= {styles.white} >Login</Link>
         </div>
       </nav>
@@ -36,7 +36,7 @@ export const Navbar3 = () => {
 
     <div className={styles.navLinks}>
       <Link to="/user/create-claim" className={styles.white2} >Claim</Link>
-      <Link to="/user/info-quote" className={styles.white2} >Quote</Link>
+      <Link to="/quote" className={styles.white2} >Quote</Link>
       <Link to="/login" className= {styles.white2} >Login</Link>
       <Link to="/contact" className= {styles.white2}>Contact Us</Link>
     </div>

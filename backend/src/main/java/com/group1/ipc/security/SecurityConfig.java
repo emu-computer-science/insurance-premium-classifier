@@ -10,7 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.RegexRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.group1.ipc.repositories.IClientRepository;
 import com.group1.ipc.repositories.IEmployeeRepository;
@@ -34,13 +36,24 @@ public class SecurityConfig {
 		builder.authenticationProvider(authenticationProvider);
 		return builder.build();
 	}
+	
+	@Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		CorsConfiguration config = new CorsConfiguration();
+		config.addAllowedHeader("*");
+		config.addAllowedMethod("*");
+		config.addAllowedOrigin("*");
+		source.registerCorsConfiguration("/**", config);
+		return source;
+	}
 
 	@Bean
 	SecurityFilterChain httpSecurity(HttpSecurity http, CorsConfigurationSource corsConfigurationSource) throws Exception {
 		return http.httpBasic((customizer) -> {
 			customizer.disable();
 		}).cors((customizer) -> {
-			customizer.disable();
+			customizer.configurationSource(corsConfigurationSource);
 		}).csrf((customizer) -> {
 			customizer.disable();
 		}).authorizeHttpRequests((customizer) -> {

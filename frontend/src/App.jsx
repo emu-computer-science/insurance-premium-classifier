@@ -7,6 +7,7 @@ import User from './components/user/User';
 import Employee from './components/employee/Employee';
 import Contact from './components/home/Contact';
 import './App.css'
+import Quote from './components/quote/Quote';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' index element={<Loginc />} />
+        <Route path='/quote' element={<Quote />} />
         <Route path='/sign-up' element={<Register />} />
         <Route path="/register2" element={<Register2 />} />
         <Route path="/user/*" element={<User />} />
