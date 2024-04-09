@@ -40,6 +40,10 @@
     align-items: center;
     margin-top: 80px;
   } 
+  .whiteText {
+    color: white;
+  }
+  
   
   .infoholder{
     border-radius: 3px;

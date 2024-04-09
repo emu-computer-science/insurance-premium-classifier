@@ -24,6 +24,11 @@
     filter: blur(110px);
   } 
 
+  .whiteText {
+    color: white;
+  }
+  
+
   .head{
     font-family: Inter, sans-serif;
     color:white;

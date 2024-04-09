@@ -9,6 +9,7 @@ import com.group1.ipc.dtos.VehicleDTO;
 import com.group1.ipc.entities.Client;
 import com.group1.ipc.repositories.IClientRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.group1.ipc.entities.Vehicle;
@@ -43,8 +44,10 @@ public class VehicleService implements IVehicleService {
 	public Optional<Vehicle> getVehicle(int id) {
 		return vehicleRepository.findById(id);
 	}
-	
-	public void addVehicle(VehicleDTO vDTO) {
+
+	@Transactional
+	public void addVehicle(VehicleDTO vDTO,Client client) {
+		client=clientRepository.findById(client.getId()).get();
 		Vehicle v=new Vehicle();
 		v.setMake(vDTO.getMake());
 		v.setMiles(vDTO.getMiles());
@@ -52,11 +55,10 @@ public class VehicleService implements IVehicleService {
 		v.setPlate(vDTO.getPlate());
 		v.setVin(vDTO.getVin());
 		v.setYear(vDTO.getYear());
-		
-		Client client = new Client();
-		client.setId(vDTO.getClientId());
-
 		v.setClient(client);
+
+		client.getVehicles();
+		client.addVehicle(v);
 		vehicleRepository.save(v);
 	}
 

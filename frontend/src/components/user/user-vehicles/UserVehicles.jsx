@@ -10,7 +10,7 @@ import React, { useState, useEffect } from 'react';
 const UserInfoQuote = () => {
   const navigateAddVehicle = useNavigate();
   const handleAddVehicle = () => {
-    navigateAddVehicle('add-vehicle');
+    navigateAddVehicle('../add-vehicle');
   }
 
   const [vehicles, setVehicles] = useState([]);

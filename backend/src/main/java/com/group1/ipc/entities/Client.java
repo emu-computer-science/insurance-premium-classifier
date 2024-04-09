@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.group1.ipc.dtos.VehicleDTO;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -111,7 +112,12 @@ public class Client {
 		return payments;
 	}
 
-	@Override
+	public void addVehicle(Vehicle vehicle)
+	{
+		vehicles.add(vehicle);
+	}
+
+						   @Override
 	public int hashCode() {
 		return Objects.hash(address, employee, firstName, id, lastName);
 	}
