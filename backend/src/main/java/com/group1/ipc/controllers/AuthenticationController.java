@@ -29,7 +29,6 @@ public class AuthenticationController {
 	}
 	@GetMapping("/logged-in/info")
 	public ClientDTO loggedInInfo(Authentication authentication) {
-		boolean loggedIn = authentication != null;
 		Client client = (Client)authentication.getPrincipal();
 		ClientDTO clientDTO = clientService.returnClientInfo(client);
 		return clientDTO;
