@@ -6,7 +6,9 @@ const UserContextProvider = ({children}) => {
 
     useEffect(() => {
         const checkIfLoggedIn = async () => {
-            const response = await fetch('http://localhost:8080/api/logged-in');
+            const response = await fetch('http://localhost:8080/api/logged-in',{ 
+                credentials: 'include'
+                });
 
             if (response.status >= 200 && response.status < 400) {
                 const dto = await response.json();
@@ -15,6 +17,7 @@ const UserContextProvider = ({children}) => {
                     setLoggedIn(true);
                 }
             }
+            
         }
         checkIfLoggedIn();
     }, []);
@@ -25,7 +28,7 @@ const UserContextProvider = ({children}) => {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: formData
+            body: formData,credentials: 'include'
         });
         
         if (!response.url.includes('error')&&response.status >= 200 && response.status < 400) {

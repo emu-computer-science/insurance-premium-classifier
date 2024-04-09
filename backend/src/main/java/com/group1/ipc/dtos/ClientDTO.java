@@ -79,4 +79,12 @@ public class ClientDTO {
     public void setDob(LocalDate dob) {
         this.dob = dob;
     }
+
+    public List getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
 }

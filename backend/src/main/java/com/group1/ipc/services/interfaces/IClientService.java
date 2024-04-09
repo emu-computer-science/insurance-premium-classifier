@@ -14,4 +14,6 @@ public interface IClientService {
 	Optional<Client> getClient(int id);
 	void updateClient(int id, ClientDTO clientDTO);
 	void deleteClient(int id);
+
+	ClientDTO returnClientInfo(Client client);
 }

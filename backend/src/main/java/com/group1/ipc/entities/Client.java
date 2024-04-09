@@ -23,7 +23,7 @@ public class Client {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dob;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	public Employee employee;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="client")
@@ -127,5 +127,13 @@ public class Client {
 
 	public void setDob(LocalDate dob) {
 		this.dob = dob;
+	}
+
+	public List getVehicles() {
+		return vehicles;
+	}
+
+	public void setClient(List<Vehicle> vehicles) {
+		this.vehicles = vehicles;
 	}
 }

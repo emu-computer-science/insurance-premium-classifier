@@ -20,7 +20,7 @@ public class Employee {
 	@JoinColumn(name="manager_id")
 	private Employee manager;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="organization_id")
 	private Organization organization;
 	

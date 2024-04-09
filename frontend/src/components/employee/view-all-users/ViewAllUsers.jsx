@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 import { Navbar2 } from '../../navbar1/Navbar1.jsx';
 import styles from "./ViewAllUsers.module.css";
 import ClientService from '../../../services/ClientService';
@@ -36,7 +36,7 @@ const ViewAllUsers= () =>{
         const fetchClients= async () => {
         try{
             const clientService = new ClientService();
-            const data = await clientService.getAllEmployees();
+            const data = await clientService.getAllClients();
             const clientList = data.map(client => new Client(client.id,client.address,client.firstName,client.lastName,client.email,client.dob,client.password));
             setClients(clientList);
             }
@@ -62,21 +62,14 @@ const ViewAllUsers= () =>{
                         <button className={styles.searchButton}>Search</button>
                     </div>
                     <div className='resultsContainer'>
-                        <b><DisplayItem user = {title} /></b>
+                     
                        
                        {
                         clients.map(client => (
                             <DisplayItem  client = {client} />
                         ))
                        }
-
-<ul>
-                {clients.map(client => (
-                    <li key={client.id}>
-                        <strong>Name:</strong> {employee.firstName}
-                    </li>
-                ))}
-            </ul>  
+ 
                        
                     </div>
                 </div>

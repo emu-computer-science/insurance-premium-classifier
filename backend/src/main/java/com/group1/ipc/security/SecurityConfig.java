@@ -10,10 +10,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.RegexRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
 import com.group1.ipc.repositories.IClientRepository;
 import com.group1.ipc.repositories.IEmployeeRepository;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 public class SecurityConfig {
@@ -21,6 +23,17 @@ public class SecurityConfig {
 	@Bean
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		CorsConfiguration config = new CorsConfiguration();
+		config.addAllowedHeader("*");
+		config.addAllowedMethod("*");
+		config.addAllowedOrigin("*");
+		source.registerCorsConfiguration("/**", config);
+		return source;
 	}
 	
 	@Bean
@@ -40,7 +53,7 @@ public class SecurityConfig {
 		return http.httpBasic((customizer) -> {
 			customizer.disable();
 		}).cors((customizer) -> {
-			customizer.disable();
+			customizer.configurationSource(corsConfigurationSource);
 		}).csrf((customizer) -> {
 			customizer.disable();
 		}).authorizeHttpRequests((customizer) -> {

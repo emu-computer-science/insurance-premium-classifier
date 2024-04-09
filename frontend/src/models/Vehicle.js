@@ -1,6 +1,7 @@
 class Vehicle{
     constructor(id,vin,make,model,year,miles,plate)
     {
+        this.id=id;
         this.vin=vin;
         this.make=make;
         this.model=model;

@@ -8,13 +8,13 @@ import UserContext from '../../../stores/UserContext.jsx'
 const EmployeeDashboard= () =>{
     const navigate = useNavigate();
     const sendToView = () => {
-    navigate('/view-all-users');
+    navigate('/employee/view-all-users');
     };
     const sendToVehicle = () => {
-        navigate('/view-all-vehicles');
+        navigate('/employee/view-all-vehicles');
         };
     const sendToMissed = () => {
-            navigate('/users-missed-payments');
+            navigate('/employee/users-missed-payments');
             };
     return (
         

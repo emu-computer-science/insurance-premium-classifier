@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 import { Navbar2 } from '../../navbar1/Navbar1.jsx';
 import styles from "./ViewAllVehicles.module.css";
 import VehicleService from '../../../services/VehicleService';
@@ -17,12 +17,12 @@ const DisplayItem = ({vehicle}) => {
     return (
         <>
             <div className={styles.display}>
-                <p className={styles.UserID}>{user.User_Id}</p>
-                <p className={styles.UserName}>{user.UserName}</p>
-                <p className={styles.Make}>{user.Make}</p>
-                <p className={styles.Model}>{user.Model}</p>
-                <p className={styles.Year}>{user.Year}</p>
-                <p className={styles.Mileage}>{user.Mileage}</p>
+                <p className={styles.UserID}>{vehicle.User_Id}</p>
+                <p className={styles.UserName}>{vehicle.UserName}</p>
+                <p className={styles.Make}>{vehicle.Make}</p>
+                <p className={styles.Model}>{vehicle.Model}</p>
+                <p className={styles.Year}>{vehicle.Year}</p>
+                <p className={styles.Mileage}>{vehicle.Mileage}</p>
             </div>
         </>
     )
@@ -37,7 +37,7 @@ const ViewAllVehicles= () =>{
         const fetchVehicles= async () => {
         try{
             const vehicleService = new VehicleService();
-            const data = await clientService.getAllVehicles();
+            const data = await vehicleService.getAllVehicles();
             const vehiclesList = data.map(vehicle  => new Vehicle(vehicle.id,vehicle.vin,vehicle.make,vehicle.model,vehicle.year,vehicle.miles,vehicle.plate));
             setVehicles(vehiclesList );
             }

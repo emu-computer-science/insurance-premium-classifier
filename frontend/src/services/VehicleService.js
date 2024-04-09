@@ -23,7 +23,7 @@ class VehicleService {
         });
 }
 
-  getAllVehicle() {
+  getAllVehicles() {
     return axios.get('http://localhost:8080/api/vehicles/vehicle')
         .then(response => response.data)
         .catch(error => {

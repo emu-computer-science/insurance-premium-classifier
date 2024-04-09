@@ -3,16 +3,18 @@ import UserMissedPayments from './users-missed-payments/UserMissedPayments'
 import ViewAllUsers from './view-all-users/ViewAllUsers'
 import ViewAllVehicles from './view-all-vehicles/ViewAllVehicles'
 import UserContext from '../../stores/UserContext'
-import { useContext } from 'react'
+import { useContext,useEffect } from 'react'
 import { useNavigate, Routes, Route } from 'react-router-dom'
 
 const Employee = () => {
     const navigate = useNavigate();
     const userContext = useContext(UserContext);
 
-    if (!userContext.loggedIn) {
-        navigate('/login');
-    }
+    useEffect(() => {
+        if (!userContext.loggedIn) {
+            navigate('/logine');
+        }
+    })
 
     return (
         <>

@@ -22,6 +22,19 @@ class ClientService {
             throw error; // Propagate error to caller
         });
 }
+ getUserInfo = async () => {
+  const response = await fetch('http://localhost:8080/api/logged-in/info',{ 
+      credentials: 'include'
+      });
+
+  if (response.status >= 200 && response.status < 400) {
+      const dto = await response.json();
+      console.log(dto);
+      return dto;
+  }
+  
+}
+
 
   getAllClients() {
     return axios.get('http://localhost:8080/api/clients/client')

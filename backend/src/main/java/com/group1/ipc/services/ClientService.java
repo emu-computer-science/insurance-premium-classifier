@@ -42,9 +42,19 @@ public class ClientService implements IClientService {
 		client.setAddress(clientDTO.getAddress());
 		client.setEmail(clientDTO.getEmail());
 		client.setDob(clientDTO.getDob());
-
 		client.setPassword(passwordEncoder.encode(clientDTO.getPassword()));;
 		clientRepository.save(client);
+	}
+
+	public ClientDTO returnClientInfo(Client client){
+		ClientDTO clientDTO =new ClientDTO();
+		clientDTO.setFirstName(client.getFirstName());
+		clientDTO.setLastName(client.getLastName());
+		clientDTO.setAddress(client.getAddress());
+		clientDTO.setEmail(client.getEmail());
+		clientDTO.setDob(client.getDob());
+		clientDTO.setVehicles(client.getVehicles());
+		return clientDTO;
 	}
 
 	public void updateClient(int id, ClientDTO clientDTO) {
