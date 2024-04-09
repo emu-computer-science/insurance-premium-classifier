@@ -1,11 +1,13 @@
 // services/ClientService.js
 import axios from 'axios';
+import Client from '../models/Client';
+
 class ClientService {
     constructor() {
         this.employees = [];
     }
 
-    addClient(client) {
+    async addClient(client) {
         return axios.post('http://localhost:8080/api/clients/client', client)
         .then(response => response.data)
         .catch(error => {
@@ -14,7 +16,7 @@ class ClientService {
         });
     }
 
-    getClientById(id) {
+    async getClientById(id) {
         return axios.get(`http://localhost:8080/api/clients/client/${id}`)
         .then(response => response.data)
         .catch(error => {
@@ -22,20 +24,31 @@ class ClientService {
             throw error; // Propagate error to caller
         });
     }
-    getUserInfo = async () => {
+
+    async getClientInfo() {
         const response = await fetch('http://localhost:8080/api/logged-in/info',{ 
             credentials: 'include'
         });
 
         if (response.status >= 200 && response.status < 400) {
             const dto = await response.json();
-            console.log(dto);
-            return dto;
+            const client = new Client(dto.id, 
+                                      dto.address, 
+                                      dto.firstName,
+                                      dto.lastName,
+                                      dto.email,
+                                      dto.password,
+                                      dto.dob,
+                                      dto.employee,
+                                      dto.vehicles,
+                                      dto.payments);
+            return client;
+        } else {
+            return null;
         }
     }
 
-
-    getAllClients() {
+    async getAllClients() {
         return axios.get('http://localhost:8080/api/clients/client')
         .then(response => response.data)
         .catch(error => {

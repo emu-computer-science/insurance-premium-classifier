@@ -43,7 +43,6 @@
 }
   
 .row1 {
-  gap: 150px;
   display: flex;
   justify-content: space-between;
 }

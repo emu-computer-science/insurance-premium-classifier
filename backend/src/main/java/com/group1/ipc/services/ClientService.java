@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import com.group1.ipc.dtos.ClientDTO;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -44,15 +46,19 @@ public class ClientService implements IClientService {
 		client.setPassword(passwordEncoder.encode(clientDTO.getPassword()));;
 		clientRepository.save(client);
 	}
-
+	
+	@Transactional
 	public ClientDTO returnClientInfo(Client client){
+		Client freshClient = clientRepository.findById(client.getId()).get();
+		
 		ClientDTO clientDTO =new ClientDTO();
-		clientDTO.setFirstName(client.getFirstName());
-		clientDTO.setLastName(client.getLastName());
-		clientDTO.setAddress(client.getAddress());
-		clientDTO.setEmail(client.getEmail());
-		clientDTO.setDob(client.getDob());
-		clientDTO.setVehicles(client.getVehicles());
+		clientDTO.setFirstName(freshClient.getFirstName());
+		clientDTO.setLastName(freshClient.getLastName());
+		clientDTO.setAddress(freshClient.getAddress());
+		clientDTO.setEmail(freshClient.getEmail());
+		clientDTO.setDob(freshClient.getDob());
+		clientDTO.setVehicles(freshClient.getVehicles());
+		
 		return clientDTO;
 	}
 
