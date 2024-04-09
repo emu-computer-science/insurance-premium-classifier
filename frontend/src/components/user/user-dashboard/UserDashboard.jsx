@@ -47,7 +47,7 @@ const UserDashboard = () => {
                     </div>
 
                     <div className={styles.row2}>
-                    <LinkButton to ="../info-quote" className= {styles.quote} >Quote</LinkButton>
+                    <LinkButton to ="/quote" className= {styles.quote} >Quote</LinkButton>
                     <LinkButton to ="../profile" className= {styles.profile}>Profile</LinkButton>
                 </div>
             </div>

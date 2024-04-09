@@ -75,7 +75,6 @@ public class ClientService implements IClientService {
 		} else {
 			throw new EntityNotFoundException("Employee with ID " + id + " not found");
 		}
-
 	}
 	
 	public void deleteClient(int id) {

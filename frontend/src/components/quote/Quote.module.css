@@ -28,8 +28,9 @@
     margin: 0;
     box-sizing: border-box;
     border: transparent;
-    border-radius: 5px;
-    padding: 8px
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 18px;
 }
 
 .container input[type='submit'] {
