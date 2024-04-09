@@ -33,6 +33,5 @@ public class AuthenticationController {
 		ClientDTO clientDTO = clientService.returnClientInfo(client);
 		return clientDTO;
 	}
-
 	
 }
