@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.group1.ipc.dtos.AddEmployeeDTO;
 import com.group1.ipc.dtos.EmployeeDTO;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.group1.ipc.entities.Employee;
@@ -17,9 +19,10 @@ import com.group1.ipc.services.interfaces.IEmployeeService;
 public class EmployeeService implements IEmployeeService {
 
 	private final IEmployeeRepository employeeRepository;
-	
-	public EmployeeService(IEmployeeRepository employeeRepository) {
+	private PasswordEncoder passwordEncoder;
+	public EmployeeService(IEmployeeRepository employeeRepository,PasswordEncoder passwordEncoder) {
 		this.employeeRepository = employeeRepository;
+		this.passwordEncoder =passwordEncoder;
 	}
 	
 	public List<Employee> getAllEmps(){
@@ -36,7 +39,8 @@ public class EmployeeService implements IEmployeeService {
 		Employee emp=new Employee();
 		emp.setFirstName(addEmpDTO.getFirstName());
 		emp.setLastName(addEmpDTO.getLastName());
-		emp.setId(addEmpDTO.getId());
+		emp.setEmail(addEmpDTO.getEmail());
+		emp.setPassword(passwordEncoder.encode(addEmpDTO.getPassword()));;
 		emp.setManager(addEmpDTO.getManager());
 		emp.setOrganization(addEmpDTO.getOrganization());
 		employeeRepository.save(emp);

@@ -1,36 +1,36 @@
 // services/ClientService.js
 import axios from 'axios';
-class ClaimService {
+class VehicleService {
   constructor() {
     this.employees = [];
   }
 
-  addClaim(claim) {
-      return axios.post('http://localhost:8080/api/claims/claim', claim)
+  addVehicle(vehicle) {
+      return axios.post('http://localhost:8080/api/vehicles/vehicle', vehicle)
             .then(response => response.data)
             .catch(error => {
-                console.error('Error adding claim:', error);
+                console.error('Error adding Vehicle:', error);
                 throw error; // Propagate error to caller
             });
   }
 
-  getClaimById(id) {
-    return axios.get(`http://localhost:8080/api/claims/claims/${id}`)
+  getVehicleById(id) {
+    return axios.get(`http://localhost:8080/api/vehicles/vehicle/${id}`)
         .then(response => response.data)
         .catch(error => {
-            console.error('Error fetching claim by ID:', error);
+            console.error('Error fetching Vehicle by ID:', error);
             throw error; // Propagate error to caller
         });
 }
 
-  getAllClaims() {
-    return axios.get('http://localhost:8080/api/claims/claim')
+  getAllVehicles() {
+    return axios.get('http://localhost:8080/api/vehicles/vehicle')
         .then(response => response.data)
         .catch(error => {
-            console.error('Error fetching claim:', error);
+            console.error('Error fetching Vehicle:', error);
             throw error; // Propagate error to caller
         });
 }
 }
 
-export default ClientService;
+export default VehicleService;

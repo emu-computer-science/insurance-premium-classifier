@@ -1,27 +1,65 @@
 import {Navbar1} from '../../navbar1/Navbar1.jsx';
-import styles from"./Register2.module.css"
+import styles from"./Register.module.css"
 import { useNavigate } from 'react-router-dom';
+import Client from '../../../models/Client';
+import ClientService from '../../../services/ClientService';
+import React, { useState, useEffect } from 'react';
 
 const Register2 = () => {
+  const [client, setClient] = useState(new Client('', '', '', '','')); // Initialize with empty client
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (e) => {
+      const { name, value } = e.target;
+      setClient(prevClient => ({
+          ...prevClient,
+          [name]: value
+      }));
+  };
+
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+          const clientService = new ClientService();
+          await clientService.addUser(client);
+          setSuccessMessage('Client added successfully!');
+          setClient(new Client('', '', '', ''));
+      } catch (error) {
+          setErrorMessage('Error adding client. Please try again.');
+      }
+  };
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/login');
   };
   return (
-    <div>
-      <Navbar1 />
-      <div className={styles.pinkElipse}></div>
-      <div className={styles.blueCircle}></div>
-      <form className={styles.container}>
-        <input className={styles.password} type = "password" placeholder='Password'/>
-        <div className={styles.passwordStrength}>
-          <div className={styles.indicatorBar} />
-          <div className={styles.indicatorText}>Strong</div>
-        </div>
-        <input className={styles.password} type = "password" placeholder='Re enter Password'/>
-        <button type="button" className={styles.next} onClick={handleClick}>Next</button>
-      </form>
+    <div className="div">
+    <Navbar1/>
+    <div className={styles.pinkElipse}></div>
+    <div className={styles.blueCircle}></div>
+    <div className={styles.registerContainer}>
+      <form className={styles.registrationForm}>
+      <div>
+      <label>Password:</label>
+      <input type="password" className={styles.inputField} placeholder="Password" />
       </div>
+      <div>
+      <label>Confirm Password:</label>
+      <input type="password" className={styles.inputField} placeholder="Confirm Password" />
+      </div>
+      <div style={{ color:'white' }}>
+    * Must be at least 16 characters <br />
+    * Must contain an upper case character <br />
+    * Must contain a lower case character <br />
+    * Must contain at least one number <br />
+    * Must contain at least one special character
+    </div>
+
+        <button type="button" className={styles.next} onClick={handleClick}>Register</button>
+        </form>
+        </div>
+        </div>
       
       )
     }

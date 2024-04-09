@@ -37,7 +37,6 @@ public class EmailPasswordAuthenticationProvider implements AuthenticationProvid
 		if (email != null) {
 			Optional<Client> client = clientRepository.findByEmail(email);
 			Optional<Employee> employee = employeeRepository.findByEmail(email);
-			
  			if (client.isPresent() && passwordEncoder.matches(password, client.get().getPassword())) {
 				return new UsernamePasswordAuthenticationToken(client.get(), null, List.of(new SimpleGrantedAuthority("ROLE_CLIENT")));
 			} else if (employee.isPresent() && passwordEncoder.matches(password, employee.get().getPassword())) {

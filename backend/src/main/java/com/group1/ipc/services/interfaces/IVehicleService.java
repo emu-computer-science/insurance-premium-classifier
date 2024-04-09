@@ -14,7 +14,7 @@ public interface IVehicleService {
 
 	Stream<Vehicle> getVehicles(int id);
 
-	void addVehicle(VehicleDTO vDTO, Client client);
+	void addVehicle(VehicleDTO vDTO);
 
 	void updateVehicle(int id, VehicleDTO vDTO, Client client);
 

@@ -16,6 +16,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.group1.ipc.repositories.IClientRepository;
 import com.group1.ipc.repositories.IEmployeeRepository;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 public class SecurityConfig {
@@ -43,7 +44,8 @@ public class SecurityConfig {
 		CorsConfiguration config = new CorsConfiguration();
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
-		config.addAllowedOrigin("*");
+		config.addAllowedOrigin("http://localhost:5173");
+		config.setAllowCredentials(true);
 		source.registerCorsConfiguration("/**", config);
 		return source;
 	}

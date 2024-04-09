@@ -39,7 +39,7 @@ public class ClientController {
 	@PutMapping("/client/{id}")
 	public void updateClient(Authentication authentication, @RequestBody ClientDTO clientDTO, @PathVariable int id) {
 		Client client = (Client) authentication.getPrincipal();
-		clientService.updateClient(id, clientDTO, client);
+		clientService.updateClient(id, clientDTO);
 	}
 	
 	@DeleteMapping("/client/{id}")

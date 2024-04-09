@@ -1,16 +1,13 @@
 package com.group1.ipc.entities;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Transient;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Client {
@@ -21,14 +18,18 @@ public class Client {
 	private String address;
 	private String firstName;
 	private String lastName;
+	@Column(unique = true)
 	private String email;
 	private String password;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dob;
 	
 	@ManyToOne(cascade=CascadeType.MERGE)
 	public Employee employee;
-	
+
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="client")
-	@Transient
+	@JsonManagedReference
 	public List<Vehicle> vehicles;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="client")
@@ -129,5 +130,20 @@ public class Client {
 				&& Objects.equals(firstName, other.firstName) && id == other.id
 				&& Objects.equals(lastName, other.lastName);
 	}
-	
+
+	public LocalDate getDob() {
+		return dob;
+	}
+
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
+	}
+
+	public List getVehicles() {
+		return vehicles;
+	}
+
+	public void setClient(List<Vehicle> vehicles) {
+		this.vehicles = vehicles;
+	}
 }

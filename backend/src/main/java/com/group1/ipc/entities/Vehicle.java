@@ -1,14 +1,10 @@
 package com.group1.ipc.entities;
 
 import java.util.Objects;
+import java.util.Optional;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
 @Entity
 public class Vehicle {
@@ -22,9 +18,10 @@ public class Vehicle {
 	private int year;
 	private int miles;
 	private String plate;
-	
+
 	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="client_id")
+	@JsonBackReference
 	private Client client;
 	
 	public Vehicle() {

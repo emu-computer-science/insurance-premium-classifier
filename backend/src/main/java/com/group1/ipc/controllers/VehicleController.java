@@ -43,7 +43,7 @@ public class VehicleController {
 	@PostMapping("/vehicle")
 	public void addVehicle(Authentication authentication, @RequestBody VehicleDTO vDTO) {
 		Client client = (Client) authentication.getPrincipal();
-		vehicleService.addVehicle(vDTO, client);
+		vehicleService.addVehicle(vDTO);
 	}
 	
 	@PutMapping("/vehicle/{id}")

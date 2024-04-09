@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 import com.group1.ipc.dtos.VehicleDTO;
 import com.group1.ipc.entities.Client;
-import com.group1.ipc.entities.Payment;
+import com.group1.ipc.repositories.IClientRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +19,18 @@ import com.group1.ipc.services.interfaces.IVehicleService;
 public class VehicleService implements IVehicleService {
 
 	private final IVehicleRepository vehicleRepository;
-	
-	public VehicleService(IVehicleRepository vehicleRepository) {
+	private final IClientRepository clientRepository;
+	public VehicleService(IVehicleRepository vehicleRepository, IClientRepository clientRepository) {
 		this.vehicleRepository = vehicleRepository;
-	}
+        this.clientRepository = clientRepository;
+    }
 	public List<Vehicle> getAllVehicles(){
 		List<Vehicle> vehicles = new ArrayList<>();
 		vehicleRepository.findAll().forEach(vehicles :: add);
 		return vehicles;
 	}
+
+
 	
 	//finds vehicles owned by 1 client
 	public Stream<Vehicle> getVehicles(int id) {
@@ -41,7 +44,7 @@ public class VehicleService implements IVehicleService {
 		return vehicleRepository.findById(id);
 	}
 	
-	public void addVehicle(VehicleDTO vDTO, Client client) {
+	public void addVehicle(VehicleDTO vDTO) {
 		Vehicle v=new Vehicle();
 		v.setMake(vDTO.getMake());
 		v.setMiles(vDTO.getMiles());
@@ -49,6 +52,10 @@ public class VehicleService implements IVehicleService {
 		v.setPlate(vDTO.getPlate());
 		v.setVin(vDTO.getVin());
 		v.setYear(vDTO.getYear());
+		
+		Client client = new Client();
+		client.setId(vDTO.getClientId());
+
 		v.setClient(client);
 		vehicleRepository.save(v);
 	}

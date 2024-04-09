@@ -32,6 +32,9 @@
     font-weight: bold;
     margin:40px 0;
   }
+  .registrationForm label {
+    color: white;
+  }
 
 .container{
     display:flex;

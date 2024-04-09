@@ -1,5 +1,7 @@
 package com.group1.ipc.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.group1.ipc.entities.Client;
 
 public class VehicleDTO {
@@ -11,6 +13,17 @@ public class VehicleDTO {
     private int miles;
     private String plate;
     private Client client;
+
+    @JsonProperty("clientId")
+    private int clientId;
+
+    public void setClientId(int client_id) {
+        this.clientId = client_id;
+    }
+
+    public int getClientId() {
+        return clientId;
+    }
     
     public int getId() {
         return id;
