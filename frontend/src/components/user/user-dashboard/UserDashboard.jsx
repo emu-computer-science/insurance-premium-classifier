@@ -15,8 +15,9 @@ const UserDashboard = () => {
                 const clientService = new ClientService();
                 const clientInfo = await clientService.getClientInfo();
                 setClientInfo(clientInfo);
-
-                localStorage.setItem('clientId', clientInfo.id);
+                console.log(clientInfo );
+                const vehiclesString = JSON.stringify(clientInfo.vehicles);
+                localStorage.setItem('vehicle', vehiclesString);
             }
             catch(error) {
                 console.error('Error fetching Clients:', error);
