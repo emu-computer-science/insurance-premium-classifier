@@ -60,8 +60,8 @@ const UserAddVehicle = () => {
             <input type="text" id="miles" value={vehicle.miles} className={styles.infoholder} placeholder="Enter Mileage" required onChange={handleChange} />
           </div>
           <div className={styles.inputContainer}>
-            <label htmlFor="mileage" className={styles.whiteText}>Mileage:</label>
-            <input type="text" id="miles" value={vehicle.plate} className={styles.infoholder} placeholder="Enter Mileage" required onChange={handleChange} />
+            <label htmlFor="mileage" className={styles.whiteText}>License Plate:</label>
+            <input type="text" id="plate" value={vehicle.plate} className={styles.infoholder} placeholder="Enter Plate" required onChange={handleChange} />
           </div>
         </div>
         <div className={styles.buttonRow}>
