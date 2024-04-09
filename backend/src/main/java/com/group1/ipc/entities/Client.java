@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -25,9 +27,9 @@ public class Client {
 	
 	@ManyToOne(cascade=CascadeType.MERGE)
 	public Employee employee;
-	
+
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="client")
-	@Transient
+	@JsonManagedReference
 	public List<Vehicle> vehicles;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="client")
