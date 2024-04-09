@@ -15,8 +15,8 @@ const UserDashboard = () => {
                 const clientService = new ClientService();
                 const clientInfo = await clientService.getClientInfo();
                 setClientInfo(clientInfo);
-                console.log(clientInfo );
                 const vehiclesString = JSON.stringify(clientInfo.vehicles);
+                console.log('vehicles', vehiclesString);
                 localStorage.setItem('vehicle', vehiclesString);
             }
             catch(error) {
