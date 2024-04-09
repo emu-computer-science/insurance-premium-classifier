@@ -37,3 +37,65 @@
     width: fit-content;
     align-self: end;
 }
+
+.animationContainer {
+    height: 91vh;
+    width: 100vw;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin-top: 15rem;
+}
+
+.ballContainer {
+    height: 8rem;
+    width: 8rem;
+    position: relative;
+    animation: 3s infinite linear rotate
+}
+
+@keyframes rotate {
+    0% {
+        rotate: 0deg;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}
+
+.ballContainer > div {
+    height: 20px;
+    width: 20px;
+    background: white;
+    border-radius: 100%;
+}
+
+.first, .second, .third {
+    position: absolute;
+}
+
+.first {
+    top: 0;
+    left: 3.25rem;
+}
+
+.second {
+    bottom: 1rem;
+}
+
+.third {
+    bottom: 1rem;
+    right: 0;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.options button {
+    padding: 5px 10px;
+    font-size: 18px;
+}
