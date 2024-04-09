@@ -1,5 +1,6 @@
 package com.group1.ipc.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -41,14 +42,14 @@ public class ClientService implements IClientService {
 		clientRepository.save(client);
 	}
 
-	public void updateClient(int id, ClientDTO clientDTO) {
-		Optional<Client> optionalClient = clientRepository.findById(id);;
+	public void updateClient(int id, ClientDTO clientDTO, Client c) {
+		Optional<Client> optionalClient = clientRepository.findById(id);
 		if (optionalClient.isPresent()) {
 			Client client=new Client();
-			client.setFirstName(clientDTO.getFirstName());
-			client.setLastName(clientDTO.getLastName());
-			client.setAddress(clientDTO.getAddress());
-			client.setEmployee(clientDTO.getEmployee());
+			client.setFirstName(c.getFirstName());
+			client.setLastName(c.getLastName());
+			client.setAddress(c.getAddress());
+			client.setEmployee(c.getEmployee());
 			clientRepository.save(client);
 		} else {
 			throw new EntityNotFoundException("Employee with ID " + id + " not found");

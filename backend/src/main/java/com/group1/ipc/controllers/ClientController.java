@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.group1.ipc.dtos.ClientDTO;
+
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import com.group1.ipc.entities.Client;
 import com.group1.ipc.services.ClientService;
@@ -35,12 +37,14 @@ public class ClientController {
 	}
 	
 	@PutMapping("/client/{id}")
-	public void updateClient(@RequestBody ClientDTO clientDTO, @PathVariable int id) {
-		clientService.updateClient(id, clientDTO);
+	public void updateClient(Authentication authentication, @RequestBody ClientDTO clientDTO, @PathVariable int id) {
+		Client client = (Client) authentication.getPrincipal();
+		clientService.updateClient(id, clientDTO, client);
 	}
 	
 	@DeleteMapping("/client/{id}")
 	public void deleteClient(@PathVariable int id) {
 		clientService.deleteClient(id);
 	}
+	
 }

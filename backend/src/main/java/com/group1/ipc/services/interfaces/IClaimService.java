@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.group1.ipc.dtos.ClaimDTO;
 import com.group1.ipc.entities.Claim;
+import com.group1.ipc.entities.Client;
 
 public interface IClaimService {
 
@@ -12,9 +13,9 @@ public interface IClaimService {
 
 	Optional<Claim> getClaim(int id);
 
-	void addClaim(ClaimDTO c);
+	void addClaim(ClaimDTO c, Client client);
 
-	void updateClaim(int id, ClaimDTO c);
+	void updateClaim(int id, ClaimDTO c, Client client);
 
 	void deleteClaim(int id);
 

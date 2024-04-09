@@ -24,7 +24,7 @@ public class Client {
 	private String email;
 	private String password;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	public Employee employee;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="client")
@@ -100,6 +100,14 @@ public class Client {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public void addPayment(Payment pay) {
+		this.payments.add(pay);
+	}
+	
+	public List<Payment> getPayment(){
+		return payments;
 	}
 
 	@Override

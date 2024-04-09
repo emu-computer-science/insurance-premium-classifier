@@ -5,7 +5,11 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import com.group1.ipc.dtos.VehicleDTO;
+
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import com.group1.ipc.entities.Client;
 import com.group1.ipc.entities.Vehicle;
 import com.group1.ipc.services.interfaces.IVehicleService;
 
@@ -37,13 +41,15 @@ public class VehicleController {
 	}
 	
 	@PostMapping("/vehicle")
-	public void addVehicle(@RequestBody VehicleDTO vDTO) {
-		vehicleService.addVehicle(vDTO);
+	public void addVehicle(Authentication authentication, @RequestBody VehicleDTO vDTO) {
+		Client client = (Client) authentication.getPrincipal();
+		vehicleService.addVehicle(vDTO, client);
 	}
 	
 	@PutMapping("/vehicle/{id}")
-	public void updatePayment(@RequestBody VehicleDTO vDTO, @PathVariable int id) {
-		vehicleService.updateVehicle(id, vDTO);
+	public void updatePayment(Authentication authentication, @RequestBody VehicleDTO vDTO, @PathVariable int id) {
+		Client client = (Client) authentication.getPrincipal();
+		vehicleService.updateVehicle(id, vDTO, client);
 	}
 	
 	@DeleteMapping("/vehicle/{id}")

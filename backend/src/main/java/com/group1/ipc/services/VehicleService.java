@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import com.group1.ipc.dtos.VehicleDTO;
+import com.group1.ipc.entities.Client;
 import com.group1.ipc.entities.Payment;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class VehicleService implements IVehicleService {
 		return vehicleRepository.findById(id);
 	}
 	
-	public void addVehicle(VehicleDTO vDTO) {
+	public void addVehicle(VehicleDTO vDTO, Client client) {
 		Vehicle v=new Vehicle();
 		v.setMake(vDTO.getMake());
 		v.setMiles(vDTO.getMiles());
@@ -48,11 +49,11 @@ public class VehicleService implements IVehicleService {
 		v.setPlate(vDTO.getPlate());
 		v.setVin(vDTO.getVin());
 		v.setYear(vDTO.getYear());
-		v.setClient(vDTO.getClient());
+		v.setClient(client);
 		vehicleRepository.save(v);
 	}
 
-	public void updateVehicle(int id, VehicleDTO vDTO) {
+	public void updateVehicle(int id, VehicleDTO vDTO, Client client) {
 		Optional<Vehicle> optionalVehicle = vehicleRepository.findById(id);
 		if (optionalVehicle.isPresent()) {
 			Vehicle v = optionalVehicle.get();
@@ -62,13 +63,11 @@ public class VehicleService implements IVehicleService {
 			v.setPlate(vDTO.getPlate());
 			v.setVin(vDTO.getVin());
 			v.setYear(vDTO.getYear());
-			v.setClient(vDTO.getClient());
+			v.setClient(client);
 			vehicleRepository.save(v);
 		} else {
 			throw new EntityNotFoundException("Payment with ID " + id + " not found");
 		}
-
-
 	}
 	
 	public void deleteVehicle(int id) {

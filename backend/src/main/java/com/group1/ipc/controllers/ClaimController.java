@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import com.group1.ipc.dtos.ClaimDTO;
+
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import com.group1.ipc.entities.Claim;
+import com.group1.ipc.entities.Client;
 import com.group1.ipc.services.interfaces.IClaimService;
 
 @RestController
@@ -29,13 +32,15 @@ public class ClaimController {
 	}
 	
 	@PostMapping("/claim")
-	public void addClaim(@RequestBody ClaimDTO c) {
-		claimService.addClaim(c);
+	public void addClaim(Authentication authentication, @RequestBody ClaimDTO c) {
+		Client client = (Client) authentication.getPrincipal();
+		claimService.addClaim(c, client);
 	}
 	
 	@PutMapping("/claim/{id}")
-	public void updateClaim(@RequestBody ClaimDTO c, @PathVariable int id) {
-		claimService.updateClaim(id, c);
+	public void updateClaim(Authentication authentication,@RequestBody ClaimDTO c, @PathVariable int id) {
+		Client client = (Client) authentication.getPrincipal();
+		claimService.updateClaim(id, c, client);
 	}
 	
 	@DeleteMapping("/claim/{id}")
