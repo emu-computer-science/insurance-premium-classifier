@@ -32,6 +32,7 @@ public class EmailPasswordAuthenticationProvider implements AuthenticationProvid
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		String email = (String) authentication.getPrincipal();
 		String credentials = (String) authentication.getCredentials();
+		String encodedCredentials = passwordEncoder.encode(credentials);
 		String password = (String) authentication.getCredentials();
 		
 		if (email != null) {
