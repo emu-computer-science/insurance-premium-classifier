@@ -1,52 +1,55 @@
+import Client from '../../../models/Client.js';
+import ClientService from '../../../services/ClientService';
 import { Navbar2 } from '../../navbar1/Navbar1.jsx';
 import styles from "./UserProfile.module.css";
 import { HomeLinkButton, MultipurposeButton } from '../../commonButton/CommonButton.jsx';
-import React, { useState, useEffect } from 'react';
-import { Link,useParams } from 'react-router-dom';
-import ClientService from '../../../services/ClientService';
-import Client from '../../../models/Client';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+
 const UserProfile = () => {
-  const [clients, setClients] = useState([]);
+  const [client, setClient] = useState(new Client());
   const params = useParams();
+
   useEffect(() => {
       const fetchClients= async () => {
       try{
           const clientService = new ClientService();
-          const client  = await clientService.getUserInfo();
-          const clientList = new Client(client.id,client.address,client.firstName,client.lastName,client.email,client.dob,client.password,client.vehicles);
-          setClients(clientList);
-          localStorage.setItem('clientId', fetchedClient.id);
-          console.log(client);
+          const client  = await clientService.getClientInfo();
+          setClient(client);
+          localStorage.setItem('clientId', client.id);
           }
           catch(error) {
               console.error('Error fetching Clients:', error);
-          };
+          }
       }
      fetchClients();
   }, [params]);
+
   return (
     <div>
       <Navbar2 />
       <div className={styles.pinkElipse}></div>
       <div className={styles.blueCircle}></div>
       <div className={styles.head}>Your Profile</div>
+
       <div className={styles.container}>
         <div className={styles.registrationForm}>
           <div>
             <label>First Name:</label>
-            <input type="text" className={styles.inputField} placeholder="First Name" value={clients.firstName} />
+            <input type="text" className={styles.inputField} placeholder="First Name" value={client.firstName} />
           </div>
           <div>
             <label>Last Name:</label>
-            <input type="text" className={styles.inputField} placeholder="Last Name" value={clients.lastName}  />
+            <input type="text" className={styles.inputField} placeholder="Last Name" value={client.lastName}  />
           </div>
           <div>
             <label>Date of Birth:</label>
-            <input type="text" className={styles.inputField} placeholder="Date of Birth" value={clients.dob}/>
+            <input type="text" className={styles.inputField} placeholder="Date of Birth" value={client.dob}/>
             </div>
           <div>
             <label>Email:</label>
-            <input type="email" className={styles.inputField} placeholder="Email" value={clients.email}/>
+            <input type="email" className={styles.inputField} placeholder="Email" value={client.email}/>
           </div>
           <HomeLinkButton />
         </div>
