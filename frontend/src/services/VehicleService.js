@@ -3,10 +3,13 @@ import axios from 'axios';
 class VehicleService {
   constructor() {
     this.employees = [];
+    this.instance = axios.create({
+      withCredentials: true})
   }
 
   addVehicle(vehicle) {
-      return axios.post('http://localhost:8080/api/vehicles/vehicle', vehicle)
+    console.log(vehicle);
+      return this.instance.post('http://localhost:8080/api/vehicles/vehicle', vehicle)
             .then(response => response.data)
             .catch(error => {
                 console.error('Error adding Vehicle:', error);
