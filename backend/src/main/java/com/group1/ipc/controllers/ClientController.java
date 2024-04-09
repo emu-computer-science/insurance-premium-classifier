@@ -8,7 +8,6 @@ import com.group1.ipc.dtos.ClientDTO;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import com.group1.ipc.entities.Client;
-import com.group1.ipc.services.ClientService;
 import com.group1.ipc.services.interfaces.IClientService;
 
 @RestController
