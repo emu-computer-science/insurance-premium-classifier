@@ -45,8 +45,10 @@ CREATE TABLE if not exists payment (
 	amount DECIMAL(9, 2),
 	due_date DATE,
 	missed BOOLEAN DEFAULT FALSE,
+	vehicle_id INT NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY(client_id) REFERENCES client(id)
+	FOREIGN KEY(client_id) REFERENCES client(id),
+	FOREIGN KEY(vehicle_id) REFERENCES vehicle(id)
 );
 
 CREATE TABLE if not exists claim (

@@ -26,6 +26,10 @@ public class Payment {
 	@JoinColumn(name="client_id")
 	private Client client;
 	
+	@ManyToOne(cascade=CascadeType.MERGE)
+	@JoinColumn(name="vehicle_id")
+	private Vehicle vehicle;
+	
 	public Payment() {
 	}
 
@@ -75,6 +79,14 @@ public class Payment {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
 	}
 
 	@Override

@@ -21,9 +21,10 @@ public class PaymentController {
 	public PaymentController(IPaymentService paymentService) {
 		this.paymentService = paymentService;
 	}
-	@GetMapping("/payment")
-	public List<Payment> getAllPayments() {
-		return paymentService.getAllPayments();
+	@GetMapping
+	public List<PaymentDTO> getAllPayments(Authentication authentication) {
+		Client client = (Client) authentication.getPrincipal();
+		return paymentService.getAllPayments(client.getId());
 	}
 	
 	@GetMapping("/payment/{id}")

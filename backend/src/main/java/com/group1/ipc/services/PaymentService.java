@@ -1,18 +1,23 @@
 package com.group1.ipc.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 import com.group1.ipc.dtos.PaymentDTO;
-import com.group1.ipc.entities.Organization;
+import com.group1.ipc.dtos.VehicleDTO;
+
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.group1.ipc.entities.Client;
 import com.group1.ipc.entities.Payment;
 import com.group1.ipc.entities.Vehicle;
+import com.group1.ipc.repositories.IClientRepository;
 import com.group1.ipc.repositories.IPaymentRepository;
 import com.group1.ipc.services.interfaces.IPaymentService;
 
@@ -20,14 +25,47 @@ import com.group1.ipc.services.interfaces.IPaymentService;
 public class PaymentService implements IPaymentService {
 
 	private final IPaymentRepository paymentRepository;
+	private final IClientRepository clientRepository;
 	
-	public PaymentService(IPaymentRepository paymentRepository) {
+	public PaymentService(IPaymentRepository paymentRepository, IClientRepository clientRepository) {
 		this.paymentRepository = paymentRepository;
+		this.clientRepository = clientRepository;
 	}
-	public List<Payment> getAllPayments(){
-		List<Payment> payments = new ArrayList<>();
-		paymentRepository.findAll().forEach(payments :: add);
-		return payments;
+	
+	@Transactional
+	public List<PaymentDTO> getAllPayments(int clientId){
+		Client client = clientRepository.findById(clientId).get();
+		
+		List<Payment> payments = client.getPayments();
+		if (payments == null) {
+			return new ArrayList<>();
+		}
+		
+		return payments.stream()
+					   .map(payment -> map(payment, client))
+					   .toList();
+	}
+	
+	private PaymentDTO map(Payment payment, Client client) {
+		Vehicle vehicle = payment.getVehicle();
+		
+		VehicleDTO vehicleDTO = new VehicleDTO();
+		vehicleDTO.setId(vehicle.getId());
+		vehicleDTO.setVin(vehicle.getVin());
+		vehicleDTO.setMake(vehicle.getMake());
+		vehicleDTO.setModel(vehicle.getModel());
+		vehicleDTO.setYear(vehicle.getYear());
+		vehicleDTO.setMiles(vehicle.getMiles());
+		vehicleDTO.setPlate(vehicle.getPlate());
+		
+		PaymentDTO paymentDTO = new PaymentDTO();
+		paymentDTO.setId(payment.getId());
+		paymentDTO.setAmount(payment.getAmount());
+		paymentDTO.setDueDate(payment.getDueDate());
+		paymentDTO.setMissed(payment.getDueDate().isAfter(LocalDate.now()));
+		paymentDTO.setVehicle(vehicleDTO);
+		
+		return paymentDTO;
 	}
 	
 	public Optional<Payment> getPayment(int id) {

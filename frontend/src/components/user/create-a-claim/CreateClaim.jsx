@@ -4,7 +4,7 @@ import {HomeLinkButton, MultipurposeButton} from '../../commonButton/CommonButto
 
 const CreateClaim= () => {
     const vehicles = JSON.parse(localStorage.getItem('vehicle'));
-    console.log(vehicles);
+
     return (
         <div>
             <Navbar2/>
@@ -44,6 +44,7 @@ const CreateClaim= () => {
 
                         <div className={styles.buttonRow}>
                             <HomeLinkButton className={styles.btn}></HomeLinkButton>
+                            <MultipurposeButton className={styles.btn}>Create a Claim</MultipurposeButton>
                         </div>
                     </>
                 )}

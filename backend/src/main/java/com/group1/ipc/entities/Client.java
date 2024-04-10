@@ -108,16 +108,15 @@ public class Client {
 		this.payments.add(pay);
 	}
 	
-	public List<Payment> getPayment(){
+	public List<Payment> getPayments() {
 		return payments;
 	}
 
-	public void addVehicle(Vehicle vehicle)
-	{
+	public void addVehicle(Vehicle vehicle) {
 		vehicles.add(vehicle);
 	}
 
-						   @Override
+	@Override
 	public int hashCode() {
 		return Objects.hash(address, employee, firstName, id, lastName);
 	}

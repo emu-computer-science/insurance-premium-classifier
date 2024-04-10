@@ -10,7 +10,7 @@ import com.group1.ipc.entities.Payment;
 
 public interface IPaymentService {
 
-	List<Payment> getAllPayments();
+	List<PaymentDTO> getAllPayments(int clientId);
 
 	Optional<Payment> getPayment(int id);
 

@@ -1,5 +1,6 @@
 package com.group1.ipc.entities;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -23,6 +24,9 @@ public class Vehicle {
 	@JoinColumn(name="client_id")
 	@JsonBackReference
 	private Client client;
+	
+	@OneToMany(mappedBy = "vehicle")
+	private List<Payment> payments;
 	
 	public Vehicle() {
 	}
@@ -100,6 +104,14 @@ public class Vehicle {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public List<Payment> getPayments() {
+		return payments;
+	}
+
+	public void setPayments(List<Payment> payments) {
+		this.payments = payments;
 	}
 
 	@Override
