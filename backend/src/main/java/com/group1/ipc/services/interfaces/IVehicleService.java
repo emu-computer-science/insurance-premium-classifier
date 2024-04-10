@@ -10,7 +10,7 @@ import com.group1.ipc.entities.Vehicle;
 
 public interface IVehicleService {
 
-	List<Vehicle> getAllVehicles();
+	List<VehicleDTO> getAllVehicles();
 
 	Stream<Vehicle> getVehicles(int id);
 

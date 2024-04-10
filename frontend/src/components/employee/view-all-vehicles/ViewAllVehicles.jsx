@@ -5,24 +5,16 @@ import VehicleService from '../../../services/VehicleService';
 import Vehicle from '../../../models/Vehicle';
 import React, { useState, useEffect } from 'react';
 
-const users = [
-    { User_Id: "0001", UserName: "Space_Cowboy",  Make: "Chevrolet", Model: "Impala", Year: 2006, Mileage: 250000 },
-    { User_Id: "0002", UserName: "ExCop", Make: "Ford", Model: "Explorer", Year: 2024, Mileage: 5000},
-    { User_Id: "0003", UserName: "noMem", Make: "Buick", Model: "Cutlass", Year: 2015, Mileage: 100000}
-];
-
 const title = {User_Id: "User Id", UserName: "Username",  Make: "Make", Model: "Model", Year: "Year", Mileage: "Mileage"}
 
 const DisplayItem = ({vehicle}) => {
     return (
         <>
             <div className={styles.display}>
-                <p className={styles.UserID}>{vehicle.User_Id}</p>
-                <p className={styles.UserName}>{vehicle.UserName}</p>
-                <p className={styles.Make}>{vehicle.Make}</p>
-                <p className={styles.Model}>{vehicle.Model}</p>
-                <p className={styles.Year}>{vehicle.Year}</p>
-                <p className={styles.Mileage}>{vehicle.Mileage}</p>
+                <p className={styles.Make}>{vehicle.make}</p>
+                <p className={styles.Model}>{vehicle.model}</p>
+                <p className={styles.Year}>{vehicle.year}</p>
+                <p className={styles.Mileage}>{vehicle.miles}</p>
             </div>
         </>
     )
@@ -30,9 +22,9 @@ const DisplayItem = ({vehicle}) => {
 }
 
 const ViewAllVehicles= () =>{
-
     const [vehicles, setVehicles] = useState([]);
     const params = useParams();
+
     useEffect(() => {
         const fetchVehicles= async () => {
         try{
@@ -69,7 +61,7 @@ const ViewAllVehicles= () =>{
                        
                        {
                         vehicles.map(vehicle => (
-                            <DisplayItem vehiclesr = {vehicle} />
+                            <DisplayItem key={vehicle.id} vehicle={vehicle} />
                         ))
                        }
 

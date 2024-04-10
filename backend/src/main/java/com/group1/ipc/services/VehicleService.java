@@ -25,13 +25,26 @@ public class VehicleService implements IVehicleService {
 		this.vehicleRepository = vehicleRepository;
         this.clientRepository = clientRepository;
     }
-	public List<Vehicle> getAllVehicles(){
-		List<Vehicle> vehicles = new ArrayList<>();
-		vehicleRepository.findAll().forEach(vehicles :: add);
-		return vehicles;
+	
+	public List<VehicleDTO> getAllVehicles(){
+		return vehicleRepository.findAll()
+								.stream()
+								.map(vehicle -> map(vehicle))
+								.toList();
 	}
-
-
+	
+	public VehicleDTO map(Vehicle vehicle) {
+		VehicleDTO vehicleDTO = new VehicleDTO();
+		vehicleDTO.setId(vehicle.getId());
+		vehicleDTO.setVin(vehicle.getVin());
+		vehicleDTO.setMake(vehicle.getMake());
+		vehicleDTO.setModel(vehicle.getMake());
+		vehicleDTO.setYear(vehicle.getYear());
+		vehicleDTO.setMiles(vehicle.getMiles());
+		vehicleDTO.setPlate(vehicle.getPlate());
+		
+		return vehicleDTO;
+	}
 	
 	//finds vehicles owned by 1 client
 	public Stream<Vehicle> getVehicles(int id) {
