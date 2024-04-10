@@ -21,7 +21,7 @@ public class ClientController {
 	}
 	
 	@GetMapping("/client")
-	public List<Client> getAllClients() {
+	public List<ClientDTO> getAllClients() {
 		return clientService.getAllClients();
 	}
 	

@@ -4,13 +4,6 @@ import styles from "./ViewAllUsers.module.css";
 import ClientService from '../../../services/ClientService';
 import Client from '../../../models/Client';
 import React, { useState, useEffect } from 'react';
-const users = [
-    { User_Id: "0001", UserName: "Space_Cowboy", Lname: "Spiegel", PaymentStatus: "Not Paid" },
-    { User_Id: "0002", UserName: "ExCop",  Lname: "Black", PaymentStatus: "Paid" },
-    { User_Id: "0003", UserName: "noMem",  Lname: "Valentine", PaymentStatus: "Not Paid" }
-];
-
-const title = {User_Id: "User Id", UserName: "Username", Lname: "Lname", PaymentStatus: "Payment Status"}
 
 const DisplayItem = ({client}) => {
     return (
@@ -29,21 +22,21 @@ const DisplayItem = ({client}) => {
 }
 
 const ViewAllUsers= () =>{
-    
     const [clients, setClients] = useState([]);
     const params = useParams();
     useEffect(() => {
         const fetchClients= async () => {
-        try{
-            const clientService = new ClientService();
-            const data = await clientService.getAllClients();
-            const clientList = data.map(client => new Client(client.id,client.address,client.firstName,client.lastName,client.email,client.dob,client.password));
-            setClients(clientList);
+            try{
+                const clientService = new ClientService();
+                const data = await clientService.getAllClients();
+                const clientList = data.map(client => new Client(client.id,client.address,client.firstName,client.lastName,client.email,client.dob,client.password));
+                setClients(clientList);
             }
             catch(error) {
                 console.error('Error fetching Clients:', error);
-            };
+            }
         }
+
        fetchClients();
     }, [params]);
     return (

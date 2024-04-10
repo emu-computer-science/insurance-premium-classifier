@@ -19,17 +19,27 @@ import com.group1.ipc.services.interfaces.IClientService;
 public class ClientService implements IClientService {
 
 	private final IClientRepository clientRepository;
-
 	private PasswordEncoder passwordEncoder;
+	
 	public ClientService(IClientRepository clientRepository,PasswordEncoder passwordEncoder) {
 		this.clientRepository = clientRepository;
 		this.passwordEncoder=passwordEncoder;
 	}
 	
-	public List<Client> getAllClients(){
-		List<Client> clients = new ArrayList<>();
-		clientRepository.findAll().forEach(clients :: add);
-		return clients;
+	public List<ClientDTO> getAllClients(){
+		return clientRepository.findAll()
+							   .stream()
+							   .map(client -> map(client))
+							   .toList();
+	}
+	
+	public ClientDTO map(Client client) {
+		ClientDTO clientDTO = new ClientDTO();
+		clientDTO.setId(client.getId());
+		clientDTO.setAddress(client.getAddress());
+		clientDTO.setFirstName(client.getFirstName());
+		clientDTO.setLastName(client.getLastName());
+		return clientDTO;
 	}
 	
 	public Optional<Client> getClient(int id) {

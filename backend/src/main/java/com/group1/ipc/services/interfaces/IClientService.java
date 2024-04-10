@@ -8,7 +8,7 @@ import com.group1.ipc.entities.Client;
 
 public interface IClientService {
 	
-	List<Client> getAllClients();
+	List<ClientDTO> getAllClients();
 	void addClient(ClientDTO clientDTO);
 	Optional<Client> getClient(int id);
 	void updateClient(int id, ClientDTO clientDTO);
