@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { HomeLinkButton, MultipurposeButton } from '../../commonButton/CommonButton.jsx';
 import VehicleService from '../../../services/VehicleService.js';
 import Vehicle from '../../../models/Vehicle.js';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
 const UserInfoQuote = () => {
@@ -20,7 +20,7 @@ const UserInfoQuote = () => {
     const fetchVehicles = async () => {
       try {
         const vehicleIds = JSON.parse(localStorage.getItem('vehicle'));
-        console.log(vehicleIds);
+
         if (Array.isArray(vehicleIds)) {
           const vehiclesList = vehicleIds.map(vehicle => new Vehicle(vehicle.id, vehicle.vin, vehicle.make, vehicle.model, vehicle.year, vehicle.miles, vehicle.plate));
           setVehicles(vehiclesList);

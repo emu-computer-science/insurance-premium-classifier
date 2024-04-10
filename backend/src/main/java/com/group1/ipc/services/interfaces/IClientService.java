@@ -15,4 +15,7 @@ public interface IClientService {
 	void deleteClient(int id);
 
 	ClientDTO returnClientInfo(Client client);
+	
+	void changePassword(int id, String password);
+	
 }

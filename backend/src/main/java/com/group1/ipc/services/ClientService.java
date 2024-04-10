@@ -81,4 +81,9 @@ public class ClientService implements IClientService {
 		clientRepository.deleteById(id);
 	}
 	
+	public void changePassword(int id, String password) {
+		String encodedPassword = passwordEncoder.encode(password);
+		clientRepository.updatePassword(id, encodedPassword);
+	}
+	
 }

@@ -119,6 +119,11 @@
         font-weight: bold;
         font-family: Inter, sans-serif;
       }
+
+      .container input[type='submit'] {
+        font-size: 18px;
+        padding: 5px 10px;
+      }
 }
 
 @media  screen and (max-width: 1590px) {

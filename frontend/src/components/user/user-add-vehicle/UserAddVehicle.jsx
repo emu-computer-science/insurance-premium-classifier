@@ -24,6 +24,11 @@ const UserAddVehicle = () => {
         try {
             const vehicleService = new VehicleService();
             await vehicleService.addVehicle(vehicle);
+            
+            const storedVehicles = JSON.parse(localStorage.getItem('vehicles'));
+            storedVehicles.push(vehicle);
+            localStorage.setItem('vehicle', storedVehicles);
+
             navigate('../vehicles')
         } catch (error) {
             setErrorMessage('Registration failed. Please try again.');
